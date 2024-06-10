@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Employee List</h2>
+
+  <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" required [(ngModel)]="employee.name" name="name" #name="ngModel">
+      <div *ngIf="name.invalid && name.dirty" class="error">Name is required</div>
+    </div>
+    <div>
+      <label for="department">Department</label>
+      <input type="text" id="department" required [(ngModel)]="employee.department" name="department" #department="ngModel">
+      <div *ngIf="department.invalid && department.dirty" class="error">Department is required</div>
+    </div>
+    <div>
+      <label for="designation">Designation</label>
+      <input type="text" id="designation" required [(ngModel)]="employee.designation" name="designation" #designation="ngModel">
+      <div *ngIf="designation.invalid && designation.dirty" class="error">Designation is required</div>
+    </div>
+    <button type="submit" [disabled]="employeeForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
+  </form>
+
+  <div *ngIf="employees.length" class="employee-list">
+    <h3>Employee List</h3>
+    <ul>
+      <li *ngFor="let employee of employees">
+        <span>{{ employee.name }} - {{ employee.department }}, {{ employee.designation }}, {{ employee.phone }}</span>
+        <button (click)="onEdit(employee)">Edit</button>
+        <button (click)="onDelete(employee.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

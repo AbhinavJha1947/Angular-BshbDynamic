@@ -1,0 +1,38 @@
+<div class="notice-container">
+  <h2 class="header">Notices</h2>
+  
+  <form (ngSubmit)="addNotice()">
+    <div class="form-group">
+      <label for="noticeText">Notice Text:</label>
+      <input type="text" id="noticeText" [(ngModel)]="newNotice.text" name="noticeText" required>
+    </div>
+    <div class="form-group">
+      <label for="noticeUrl">Notice URL:</label>
+      <input type="text" id="noticeUrl" [(ngModel)]="newNotice.url" name="noticeUrl" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Notice</button>
+  </form>
+  
+  <div *ngIf="message" class="alert alert-success">{{ message }}</div>
+
+  <h2 class="subheader">Notices List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>URL</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notice of notices">
+        <td>{{ notice.text }}</td>
+        <td><a [href]="notice.url" target="_blank">{{ notice.url }}</a></td>
+        <td>
+          <button (click)="editNotice(notice)" class="btn btn-secondary">Edit</button>
+          <button (click)="deleteNotice(notice.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

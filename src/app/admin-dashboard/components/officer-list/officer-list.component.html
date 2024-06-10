@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Officer List</h2>
+  <form (ngSubmit)="addOfficer()" class="form-container" #officerForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" [(ngModel)]="newOfficer.name" name="name" required #name="ngModel">
+      <div *ngIf="name.invalid && name.dirty" class="error">Name is required</div>
+    </div>
+    <div class="form-group">
+      <label for="designation">Designation:</label>
+      <input id="designation" [(ngModel)]="newOfficer.designation" name="designation" required #designation="ngModel">
+      <div *ngIf="designation.invalid && designation.dirty" class="error">Designation is required</div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="newOfficer.email" name="email" required #email="ngModel">
+      <div *ngIf="email.invalid && email.dirty" class="error">Email is required</div>
+    </div>
+    <div class="form-group">
+      <label for="contactNumber">Contact Number:</label>
+      <input id="contactNumber" [(ngModel)]="newOfficer.contactNumber" name="contactNumber" required #contactNumber="ngModel">
+      <div *ngIf="contactNumber.invalid && contactNumber.dirty" class="error">Contact Number is required</div>
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <input id="photo" type="file" (change)="onPhotoSelected($event)" name="photo" accept="image/*">
+      <div *ngIf="!newOfficer.photo && officerForm.submitted" class="error">Photo is required</div>
+      <img *ngIf="newOfficer.photo" [src]="newOfficer.photo" alt="Selected photo" class="photo">
+    </div>
+    <button type="submit" [disabled]="officerForm.invalid">Add Officer</button>
+  </form>
+
+  <ul class="officer-list">
+    <li *ngFor="let officer of officers; let i = index">
+      <div class="officer-item">
+        <h3>{{ officer.name }}</h3>
+        <p>Designation: {{ officer.designation }}</p>
+        <p>Email: {{ officer.email }}</p>
+        <p>Contact Number: {{ officer.contactNumber }}</p>
+        <img [src]="officer.photo" alt="Photo of {{ officer.name }}" class="photo">
+        <button (click)="editOfficer(i)">Edit</button>
+        <button (click)="deleteOfficer(i)">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>

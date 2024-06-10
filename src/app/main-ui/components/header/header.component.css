@@ -1,0 +1,78 @@
+/* Reset some default styles for better cross-browser consistency */
+body, ul, li, nav, a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #b5a322;
+  width: 100%;
+  margin: auto;
+}
+
+.top-bar {
+  background-color: #058131;
+  padding: 10px 0;
+}
+
+.top-bar .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.first-logo {
+  flex: 0 0 30%;
+  text-align: center;
+}
+
+.other-logos {
+  flex: 0 0 65%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.logo {
+  flex: 1 0 30%; /* Adjust flex to fit the logos as needed */
+  text-align: center;
+}
+
+.logo-img {
+  width: 80%; /* Adjust size as needed */
+}
+
+.other-logo-img {
+  width: 80%; /* Adjust size as needed */
+}
+
+.search-bar {
+  flex: 0 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .header-main {
+    flex-direction: column;
+  }
+
+  .first-logo, .other-logos, .search-bar {
+    flex: 1 0 auto;
+    text-align: center;
+  }
+
+  .logo {
+    margin-bottom: 5px;
+  }
+}

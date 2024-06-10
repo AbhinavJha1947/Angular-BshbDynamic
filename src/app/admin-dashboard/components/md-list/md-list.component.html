@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>MD List</h2>
+  <form (ngSubmit)="addMdListItem()" class="form-container" #mdListForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" [(ngModel)]="newMdListItem.name" name="name" required #name="ngModel">
+      <div *ngIf="name.invalid && name.dirty" class="error">Name is required</div>
+    </div>
+    <div class="form-group">
+      <label for="fromDate">From Date:</label>
+      <input id="fromDate" type="date" [(ngModel)]="newMdListItem.fromDate" name="fromDate" required #fromDate="ngModel">
+      <div *ngIf="fromDate.invalid && fromDate.dirty" class="error">From Date is required</div>
+    </div>
+    <div class="form-group">
+      <label for="toDate">To Date:</label>
+      <input id="toDate" type="date" [(ngModel)]="newMdListItem.toDate" name="toDate" required #toDate="ngModel">
+      <div *ngIf="toDate.invalid && toDate.dirty" class="error">To Date is required</div>
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <input id="photo" type="file" (change)="onPhotoSelected($event)" name="photo" accept="image/*">
+      <div *ngIf="!newMdListItem.photo && mdListForm.submitted" class="error">Photo is required</div>
+      <img *ngIf="newMdListItem.photo" [src]="newMdListItem.photo" alt="Selected photo" class="photo">
+    </div>
+    <button type="submit" [disabled]="mdListForm.invalid">Add Item</button>
+  </form>
+
+  <ul class="md-list">
+    <li *ngFor="let item of mdListItems; let i = index">
+      <div class="md-item">
+        <h3>{{ item.name }}</h3>
+        <p>From: {{ item.fromDate }}</p>
+        <p>To: {{ item.toDate }}</p>
+        <img [src]="item.photo" alt="Photo of {{ item.name }}" class="photo">
+        <button (click)="editMdListItem(i)">Edit</button>
+        <button (click)="deleteMdListItem(i)">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>

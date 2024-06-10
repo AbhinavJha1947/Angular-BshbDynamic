@@ -1,0 +1,9 @@
+<div class="gallery-container">
+    <h1>Video Gallery</h1>
+    <div class="gallery-grid">
+      <div class="gallery-item" *ngFor="let video of videos">
+        <video controls [src]="'data:' + video.contentType + ';base64,' + video.video" [title]="video.videoName"></video>
+      </div>
+    </div>
+  </div>
+  

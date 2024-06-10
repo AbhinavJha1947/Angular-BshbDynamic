@@ -1,0 +1,31 @@
+<h2>Current Tenders</h2>
+
+<form (ngSubmit)="onSubmit()" #tenderForm="ngForm">
+  <div>
+    <label for="tenderDetails">Tender Details</label>
+    <input type="text" id="tenderDetails" required [(ngModel)]="tender.tenderDetails" name="tenderDetails" #tenderDetails="ngModel">
+    <div *ngIf="tenderDetails.invalid && tenderDetails.dirty" class="error">Tender Details is required</div>
+  </div>
+  <div>
+    <label for="publishDate">Publish Date</label>
+    <input type="datetime-local" id="publishDate" required [(ngModel)]="tender.publishDate" name="publishDate" #publishDate="ngModel">
+    <div *ngIf="publishDate.invalid && publishDate.dirty" class="error">Publish Date is required</div>
+  </div>
+  <div>
+    <label for="lastDateOfsubmission">Last Date of Submission</label>
+    <input type="datetime-local" id="lastDateOfsubmission" required [(ngModel)]="tender.lastDateOfsubmission" name="lastDateOfsubmission" #lastDateOfsubmission="ngModel">
+    <div *ngIf="lastDateOfsubmission.invalid && lastDateOfsubmission.dirty" class="error">Last Date of Submission is required</div>
+  </div>
+  <button type="submit" [disabled]="tenderForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
+</form>
+
+<div *ngIf="tenders.length">
+  <h3>Current Tender</h3>
+  <ul>
+    <li *ngFor="let tender of tenders">
+      {{ tender.tenderDetails }} - Publish Date: {{ tender.publishDate | date:'medium' }}, Last Date of Submission: {{ tender.lastDateOfsubmission | date:'medium' }}
+      <button (click)="onEdit(tender)">Edit</button>
+      <button (click)="onDelete(tender.id)">Delete</button>
+    </li>
+  </ul>
+</div>

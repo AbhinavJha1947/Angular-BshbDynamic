@@ -1,0 +1,101 @@
+<div class="app">
+    <div class="wrapper">
+        <div class="sticky-container">
+            <ul class="sticky">
+                <li>
+                    <img src="assets/images/facebook-circle.png" alt="Facebook">
+                    <p><a href="https://www.facebook.com/codexworld" target="_blank">Like Us on<br>Facebook</a></p>
+                </li>
+                <li>
+                    <img src="assets/images/twitter-circle.png" alt="Twitter">
+                    <p><a href="https://twitter.com/codexworldblog" target="_blank">Follow Us on<br>Twitter</a></p>
+                </li>
+                <li>
+                    <img src="assets/images/linkedin-circle.png" alt="LinkedIn">
+                    <p><a href="https://www.linkedin.com/company/codexworld" target="_blank">Follow Us on<br>LinkedIn</a></p>
+                </li>
+                <li>
+                    <img src="assets/images/youtube-circle.png" alt="YouTube">
+                    <p><a href="http://www.youtube.com/codexworld" target="_blank">Subscribe on<br>YouTube</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <app-header></app-header>
+    <nav>
+        <ul class="nav-bar">
+            <li class="nav-item"><a routerLink="/">Home</a></li>
+            <li class="nav-item dropdown">
+                <a href="#">About Us</a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/about-us">About Us</a></li>
+                    <li><a routerLink="/md-message">MD Message</a></li>
+                    <li><a routerLink="/chairman-list">List of Chairman</a></li>
+                    <li><a routerLink="/md-list">List Of MD</a></li>
+                    <li><a routerLink="/officers-list">Officers List</a></li>
+                    <li><a routerLink="/our-employee">Our Employee</a></li>
+                    <li><a routerLink="/organizational-structure">Organisational Structure</a></li>
+                    <li><a routerLink="/policies">Policies</a></li>
+                    <li><a routerLink="/acts-and-rules">Acts & Rules</a></li>
+                    <li><a routerLink="/vision">Vision</a></li>
+                 </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#">RTI</a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://jaankari.bihar.gov.in/">Jaankari Facilitation Centre</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#">Gallery</a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/photo-gallery">Photo Gallery</a></li>
+                    <li><a routerLink="/video-gallery">Video Gallery</a></li>
+                    <li><a routerLink="/press-release">Press Release</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#">Notices</a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/notices">Notices</a></li>
+                    <li><a routerLink="/office-orders">Office Orders</a></li>
+                    <li><a routerLink="/circulars">Circulars</a></li>
+                    <li><a routerLink="/minute-of-board-meeting">Minutes of Board Meeting</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#">Tenders</a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/current-tenders">Current Tenders</a></li>
+                    <li><a routerLink="/archieve-tenders">Archive Tenders</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#">Schemes</a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/new-schemes">New Schemes</a></li>
+                    <li><a routerLink="/old-schemes">Old Schemes</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a routerLink="/layout-plan">Layout Plans</a></li>
+            <li class="nav-item"><a routerLink="/career">Career</a></li>
+            <li class="nav-item"><a routerLink="/contact-list">Contact List</a></li>
+            <li class="nav-item dropdown">
+                <a href="#">Login</a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/administrative-login">Administrative Login</a></li>
+                    <li><a routerLink="/user-login">User Login</a></li>
+                    <li><a routerLink="/section-officer-login">Section Officer Login</a></li>
+                    <li><a routerLink="/samadhan-incharge-login">Samadhan Incharge</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <app-notices></app-notices>
+        <app-sub-notices></app-sub-notices>
+        <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
+  

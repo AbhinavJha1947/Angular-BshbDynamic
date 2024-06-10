@@ -1,0 +1,33 @@
+.latest-news {
+    background-color: blue;
+    padding: 20px;
+  }
+  
+  .newshead {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .newscontent {
+    background-color: #003366;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .newscontent marquee {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .newscontent a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .newscontent a img {
+    vertical-align: middle;
+  }
+  

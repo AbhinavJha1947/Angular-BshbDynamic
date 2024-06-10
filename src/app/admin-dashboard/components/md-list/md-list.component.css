@@ -1,0 +1,103 @@
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group .error {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.md-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.md-list li {
+  margin-bottom: 10px;
+}
+
+.md-item {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.md-item h3 {
+  margin-top: 0;
+}
+
+.md-item p {
+  margin: 5px 0;
+}
+
+.md-item .photo {
+  max-width: 100px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.md-item button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  margin-right: 5px;
+}
+
+.md-item button:hover {
+  background-color: #0056b3;
+}

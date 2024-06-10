@@ -1,0 +1,25 @@
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .gallery-item {
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .gallery-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  

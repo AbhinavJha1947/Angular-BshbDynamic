@@ -1,0 +1,33 @@
+<div class="officer-container">
+    <h2>Create Officer</h2>
+    <form (ngSubmit)="addOfficer()" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="officerName">Name:</label>
+        <input type="text" id="officerName" [(ngModel)]="newOfficer.name" name="officerName" required>
+      </div>
+      <div class="form-group">
+        <label for="officerImage">Image:</label>
+        <input type="file" id="officerImage" (change)="onFileChange($event)" name="officerImage" required>
+      </div>
+      <div class="form-group">
+        <label for="officerDesignation">Designation:</label>
+        <input type="text" id="officerDesignation" [(ngModel)]="newOfficer.designation" name="officerDesignation" required>
+      </div>
+      <div class="form-group">
+        <label for="officerDetails">Other Details:</label>
+        <textarea id="officerDetails" [(ngModel)]="newOfficer.details" name="officerDetails" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ editingOfficer ? 'Update' : 'Add' }} Officer</button>
+    </form>
+  
+    <h2>Officers</h2>
+    <div *ngFor="let officer of officers" class="officer-item">
+      <img [src]="officer.image" alt="{{ officer.name }}" class="officer-img">
+      <p><strong>Name:</strong> {{ officer.name }}</p>
+      <p><strong>Designation:</strong> {{ officer.designation }}</p>
+      <p><strong>Details:</strong> {{ officer.details }}</p>
+      <button (click)="editOfficer(officer)" class="btn btn-secondary">Edit</button>
+      <button (click)="deleteOfficer(officer.id)" class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,26 @@
+<header class="header" style="background-color:#b5a322;">
+  <div class="header-main row">
+    <div class="first-logo col-md-3 col-sm-3" *ngIf="headerImages.length > 0">
+      <ng-container *ngIf="headerImages[0]">
+        <a [href]="headerImages[0]['url1']" target="_blank" *ngIf="headerImages[0]['url1'] && getImageSrc(headerImages[0]['img1'])">
+          <img [src]="getImageSrc(headerImages[0]['img1'])" alt="Logo" class="img-responsive logo-img" />
+        </a>
+      </ng-container>
+    </div>
+    <div class="other-logos col-md-7 col-sm-7">
+      <ng-container *ngFor="let image of headerImages.slice(1)">
+        <ng-container *ngFor="let idx of [2, 3, 4, 5, 6, 7, 8]">
+          <h1 class="logo" *ngIf="image['url' + idx] && getImageSrc(image['img' + idx])">
+            <a [href]="image['url' + idx]" target="_blank">
+              <img [src]="getImageSrc(image['img' + idx])" alt="Logo" class="img-responsive other-logo-img" />
+            </a>
+          </h1>
+        </ng-container>
+      </ng-container>
+    </div>
+    <!-- <div class="search-bar col-md-2 col-sm-2">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." (keydown.enter)="search()">
+      <button (click)="search()">Search</button>
+    </div> -->
+  </div>
+</header>

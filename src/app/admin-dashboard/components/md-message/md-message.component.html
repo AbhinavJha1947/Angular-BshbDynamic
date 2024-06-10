@@ -1,0 +1,20 @@
+<div class="container">
+    <form (ngSubmit)="addMessage()" class="form-container">
+      <div class="form-group">
+        <label for="text">Message Text:</label>
+        <textarea id="text" [(ngModel)]="newMessage.text" name="text" required></textarea>
+      </div>
+      <button type="submit">Add Message</button>
+    </form>
+  
+    <ul class="message-list">
+      <li *ngFor="let message of messages; let i = index">
+        <div class="message">
+          <p>{{ message.text }}</p>
+          <button (click)="editMessage(i)">Edit</button>
+          <button (click)="deleteMessage(i)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

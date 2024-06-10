@@ -1,0 +1,117 @@
+/* Container for the form and list */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form group styles */
+form > div {
+    margin-bottom: 15px;
+}
+
+/* Label styles */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Input field styles */
+form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Error message styles */
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+/* Submit button styles */
+button[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+/* Disabled submit button styles */
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Employee list container */
+.employee-list {
+    margin-top: 20px;
+}
+
+/* Employee list title */
+.employee-list h3 {
+    text-align: center;
+    color: #333;
+}
+
+/* Employee list items */
+.employee-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Individual employee item styles */
+.employee-list li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Employee item text */
+.employee-list li span {
+    margin-right: 10px;
+}
+
+/* Edit and delete button styles */
+.employee-list li button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    margin-left: 5px;
+}
+
+/* Edit and delete button hover styles */
+.employee-list li button:hover {
+    background-color: #0056b3;
+}
