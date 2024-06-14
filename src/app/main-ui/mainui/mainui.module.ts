@@ -37,10 +37,22 @@ import { SamadhanInchargeLoginComponent } from 'src/app/main-ui/components/samad
 import { SubNoticesComponent } from 'src/app/main-ui/sub-notices/sub-notices.component';
 import { AboutUsComponent } from 'src/app/main-ui/components/about-us/about-us.component';
 import { HomePageComponent } from 'src/app/main-ui/components/home-page/home-page.component';
+import { FeedbackComponent } from 'src/app/main-ui/components/feedback/feedback.component';
+import { TermsandconditionComponent } from 'src/app/main-ui/components/termsandcondition/termsandcondition.component';
+import { WebsitePolicyComponent } from 'src/app/main-ui/components/website-policy/website-policy.component';
+import { ImageSliderComponent } from 'src/app/main-ui/components/image-slider/image-slider.component';
+import { CarouselModule } from '@syncfusion/ej2-angular-navigations';
+import { DataService } from 'src/app/main-ui/data.service';
+import { SitemapComponent } from 'src/app/main-ui/components/sitemap/sitemap.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    FeedbackComponent,
+    SitemapComponent,
+    TermsandconditionComponent,
+    WebsitePolicyComponent,
+    ImageSliderComponent,
     FooterComponent,
     MainUiComponent,
     ActsAndRulesComponent,
@@ -79,8 +91,10 @@ import { HomePageComponent } from 'src/app/main-ui/components/home-page/home-pag
     CommonModule,
     RouterModule ,
     MainuiRoutingModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ],
+  providers: [DataService],
   exports: [
     // HeaderComponent,
     // FooterComponent,

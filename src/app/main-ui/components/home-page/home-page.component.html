@@ -1,4 +1,37 @@
 <div>
-    <h1>Welcome to the Home Page</h1>
+  <h1>Welcome to the Home Page</h1>
+  <p>WELCOME TO Ministry/Department</p>
+  <p>
+    Welcome to the website of Ministry/Department, Government of India.
+  </p>
+  <p>
+    An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves. An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves. Bihar State Housing board (BSHB) represents a statutory authority constituted by the Government of Bihar under the Bihar State Housing Board act, 1982 and is mandated with the development of various housing schemes & related infrastructural facilities in the state.
+  </p>
+  <div class="officers-container">
+    <div *ngFor="let officer of officers" class="officer-item">
+      <img [src]="officer.image" alt="{{ officer.name }}" class="officer-img">
+      <p><strong> {{ officer.name }} </strong></p>
+      <p><strong>{{ officer.designation }} </strong></p>
+      <p>{{ officer.details }}</p>
+    </div>
   </div>
   
+  <div class="slider-container">
+    <h2>What's New</h2>
+    <div class="slider">
+      <div *ngFor="let item of whatsNewItems" class="slide">
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-container">
+    <h2>Tenders</h2>
+    <div class="slider">
+      <div *ngFor="let item of tenders" class="slide">
+        <div class="date"><span>{{ item.date }}</span><em>{{ item.monthYear }}</em></div>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

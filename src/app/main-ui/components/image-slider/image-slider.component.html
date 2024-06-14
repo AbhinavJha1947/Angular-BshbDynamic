@@ -1,0 +1,12 @@
+<div class="slider">
+    <div class="slides" [style.transform]="'translateX(' + (-currentIndex * slideWidth) + 'px)'">
+      <div *ngFor="let item of sliderArray" class="slide">
+        <img [src]="item.img" [alt]="item.alt">
+        <div class="text">{{ item.text }}</div>
+      </div>
+    </div>
+    <button class="nav prev" (click)="goToPrevSlide()">&#10094;</button>
+    <button class="nav next" (click)="goToNextSlide()">&#10095;</button>
+    <button class="control" (click)="togglePause()">{{ isPaused ? 'Play' : 'Pause' }}</button>
+  </div>
+  

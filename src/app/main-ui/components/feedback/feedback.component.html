@@ -1,0 +1,35 @@
+<form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" required [(ngModel)]="feedbackData.name" name="name" #name="ngModel">
+      <div [hidden]="name.valid || name.pristine" class="error">
+        Name is required.
+      </div>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" required [(ngModel)]="feedbackData.email" name="email" #email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="error">
+        Valid email is required.
+      </div>
+    </div>
+    <div>
+      <label for="feedback">Feedback</label>
+      <textarea id="feedback" required [(ngModel)]="feedbackData.feedbackText" name="feedback" #feedback="ngModel"></textarea>
+      <div [hidden]="feedback.valid || feedback.pristine" class="error">
+        Feedback is required.
+      </div>
+    </div>
+    <div>
+      <label for="captcha">CAPTCHA</label>
+      <img [src]="captchaUrl" alt="CAPTCHA">
+      <button type="button" (click)="refreshCaptcha()">Refresh Image</button>
+      <button type="button" (click)="playCaptchaAudio()">Play CAPTCHA Audio</button>
+      <input type="text" id="captcha" required [(ngModel)]="feedbackData.captcha" name="captcha" #captcha="ngModel">
+      <div [hidden]="captcha.valid || captcha.pristine" class="error">
+        CAPTCHA is required.
+      </div>
+    </div>
+    <button type="submit" [disabled]="!feedbackForm.form.valid">Submit</button>
+  </form>
+  

@@ -32,12 +32,20 @@ import { SamadhanInchargeLoginComponent } from 'src/app/main-ui/components/samad
 import { SubNoticesComponent } from 'src/app/main-ui/sub-notices/sub-notices.component';
 import { AboutUsComponent } from 'src/app/main-ui/components/about-us/about-us.component';
 import { HomePageComponent } from 'src/app/main-ui/components/home-page/home-page.component';
+import { FeedbackComponent } from 'src/app/main-ui/components/feedback/feedback.component';
+import { TermsandconditionComponent } from 'src/app/main-ui/components/termsandcondition/termsandcondition.component';
+import { WebsitePolicyComponent } from 'src/app/main-ui/components/website-policy/website-policy.component';
+import { SitemapComponent } from 'src/app/main-ui/components/sitemap/sitemap.component';
 
 const routes: Routes = [
   { 
     path: '', component: MainUiComponent, children: [
-      { path: 'home-page', component: HomePageComponent }, 
+      { path: '', component: HomePageComponent }, 
       { path: 'acts-and-rules', component: ActsAndRulesComponent },
+      { path: 'feedback', component: FeedbackComponent }, 
+      { path: 'sitemap', component: SitemapComponent }, 
+      { path: 'termsandcondition', component: TermsandconditionComponent }, 
+      { path: 'website-policy', component: WebsitePolicyComponent }, 
       { path: 'administrative-login', component: AdministrativeLoginComponent },
       { path: 'archieve-tenders', component: ArchieveTendersComponent },
       { path: 'career', component: CareerComponent },
