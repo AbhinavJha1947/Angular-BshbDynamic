@@ -1,0 +1,20 @@
+<h1>Public FeedBack</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Serial Number</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Feedback</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let feedback of feedbackList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ feedback.name }}</td>
+      <td>{{ feedback.email }}</td>
+      <td>{{ feedback.feedbackText }}</td>
+    </tr>
+  </tbody>
+</table>

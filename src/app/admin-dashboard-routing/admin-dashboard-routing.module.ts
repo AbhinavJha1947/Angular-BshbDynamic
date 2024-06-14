@@ -23,6 +23,7 @@ import { HomeHyperLinkComponent } from 'src/app/admin-dashboard/components/home-
 import { HomePositiveNoteComponent } from 'src/app/admin-dashboard/components/home-positive-note/home-positive-note.component';
 import { HomeNewSchemeComponent } from 'src/app/admin-dashboard/components/home-new-scheme/home-new-scheme.component';
 import { HomeImportantNoticeComponent } from 'src/app/admin-dashboard/components/home-important-notice/home-important-notice.component';
+import { FeedbackComponent } from 'src/app/admin-dashboard/components/feedback/feedback.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,9 @@ const routes: Routes = [
       { path: 'home-hyper-link', component: HomeHyperLinkComponent },
       { path: 'home-positive-note', component: HomePositiveNoteComponent },
       { path: 'home-new-scheme', component: HomeNewSchemeComponent },
-      { path: 'home-important-notice', component: HomeImportantNoticeComponent }
+      { path: 'home-important-notice', component: HomeImportantNoticeComponent },
+      { path: 'feedback', component: FeedbackComponent }
+
 
     ]
   }

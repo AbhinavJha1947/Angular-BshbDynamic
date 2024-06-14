@@ -27,6 +27,7 @@ import { HomePositiveNoteComponent } from './components/home-positive-note/home-
 import { HomeNewSchemeComponent } from './components/home-new-scheme/home-new-scheme.component';
 import { HomeImportantNoticeComponent } from './components/home-important-notice/home-important-notice.component';
 import { VideoUploadComponent } from './components/video-upload/video-upload.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { VideoUploadComponent } from './components/video-upload/video-upload.com
     HomeNewSchemeComponent,
     HomeImportantNoticeComponent,
     VideoUploadComponent,
+    FeedbackComponent,
     
   ],
   imports: [

@@ -1,1 +1,21 @@
-<p>contact-list works!</p>
+<h1>Contact List</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Serial Number</th>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Designation</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contactList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ contact.name }}</td>
+      <td>{{ contact.department }}</td>
+      <td>{{ contact.designation }}</td>
+      <td>{{ contact.phone }}</td>
+    </tr>
+  </tbody>
+</table>

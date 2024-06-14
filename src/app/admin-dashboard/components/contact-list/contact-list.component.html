@@ -1,6 +1,6 @@
 <h2>Contact List</h2>
 
-<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+<form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
   <div>
     <label for="name">Name</label>
     <input type="text" id="name" required [(ngModel)]="contact.name" name="name" #name="ngModel">
@@ -24,13 +24,31 @@
   <button type="submit" [disabled]="contactForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
 </form>
 
-<div *ngIf="contacts.length">
+<div class="contact-list">
   <h3>Contacts List</h3>
-  <ul>
-    <li *ngFor="let contact of contacts">
-      {{ contact.name }} - {{ contact.department }}, {{ contact.designation }}, {{ contact.phone }}
-      <button (click)="onEdit(contact)">Edit</button>
-      <button (click)="onDelete(contact.id)">Delete</button>
-    </li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.department }}</td>
+        <td>{{ contact.designation }}</td>
+        <td>{{ contact.phone }}</td>
+        <td>
+          <button (click)="onEdit(contact)">Edit</button>
+          <button *ngIf="contact.id" (click)="onDelete(contact.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
