@@ -8,7 +8,7 @@ interface Chairmen {
   name: string;
   from: Date;
   to: Date;
-  photo: string; // Ensure it's of type string
+  photo: string; 
 } 
 @Injectable({
   providedIn: 'root'

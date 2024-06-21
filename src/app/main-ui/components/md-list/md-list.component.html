@@ -1,1 +1,23 @@
-<p>md-list works!</p>
+<div class="md-list">
+  <h3>MD List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No</th>
+        <th>Name</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Photo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let md of mdList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ md.name }}</td>
+        <td>{{ md.fromDate | date:'medium' }}</td>
+        <td>{{ md.toDate | date:'medium' }}</td>
+        <td><img *ngIf="md.photo" [src]="md.photo" alt="MD Photo" style="max-width: 100px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

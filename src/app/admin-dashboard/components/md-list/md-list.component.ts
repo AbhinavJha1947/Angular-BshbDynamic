@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdListService } from 'src/app/admin-dashboard/Services/md-list.service';
 
-interface MdListItem {
+interface Md {
   id?: number;
   name: string;
   fromDate: string;
@@ -15,8 +15,8 @@ interface MdListItem {
   styleUrls: ['./md-list.component.css']
 })
 export class MdListComponent implements OnInit {
-  mdListItems: MdListItem[] = [];
-  newMdListItem: MdListItem = { name: '', fromDate: '', toDate: '', photo: '' };
+  mdListItems: Md[] = [];
+  newMdListItem: Md = { name: '', fromDate: '', toDate: '', photo: '' };
 
   constructor(private mdListService: MdListService) {}
 

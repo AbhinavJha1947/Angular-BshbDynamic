@@ -9,6 +9,7 @@ interface Chairmen {
   photo: string; // Ensure it's of type string
 } 
 
+
 @Component({
   selector: 'app-chairman-list',
   templateUrl: './chairman-list.component.html',
