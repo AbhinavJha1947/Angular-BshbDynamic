@@ -1,20 +1,31 @@
 <div class="container">
-    <form (ngSubmit)="addMessage()" class="form-container">
-      <div class="form-group">
-        <label for="text">Message Text:</label>
-        <textarea id="text" [(ngModel)]="newMessage.text" name="text" required></textarea>
-      </div>
-      <button type="submit">Add Message</button>
-    </form>
-  
-    <ul class="message-list">
-      <li *ngFor="let message of messages; let i = index">
-        <div class="message">
-          <p>{{ message.text }}</p>
-          <button (click)="editMessage(i)">Edit</button>
-          <button (click)="deleteMessage(i)">Delete</button>
-        </div>
-      </li>
-    </ul>
-  </div>
-  
+  <form (ngSubmit)="addMessage()" class="form-container">
+    <div class="form-group">
+      <label for="text">Message Text:</label>
+      <textarea id="text" [(ngModel)]="newMessage.message" name="text" required></textarea>
+    </div>
+    <button type="submit">Add Message</button>
+  </form>
+
+  <table class="message-table">
+    <thead>
+      <tr>
+        <th>Message</th>
+        <th>Created Date</th>
+        <th>Updated Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let message of messages">
+        <td>{{ message.message }}</td>
+        <td>{{ message.createddate | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ message.updateddate | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>
+          <button (click)="editMessage(message)">Edit</button>
+          <button (click)="deleteMessage(message)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

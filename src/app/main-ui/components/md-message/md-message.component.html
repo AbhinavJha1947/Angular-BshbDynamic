@@ -1,1 +1,16 @@
-<p>md-message works!</p>
+<table class="message-table">
+    <thead>
+      <tr>
+        <th>Message</th>
+        <th>Created Date</th>
+        <th>Updated Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let message of messages">
+        <td>{{ message.message }}</td>
+        <td>{{ message.createddate | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ message.updateddate | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+      </tr>
+    </tbody>
+  </table>

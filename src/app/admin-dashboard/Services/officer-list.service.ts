@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ConfigService } from 'src/app/config.service';
 
 interface Officer {
   id?: number;
@@ -14,23 +15,22 @@ interface Officer {
   providedIn: 'root'
 })
 export class OfficerListService  {
-  private apiUrl = 'https://localhost:7210/api/officerlist';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigService) { }
 
   getOfficers(): Observable<Officer[]> {
-    return this.http.get<Officer[]>(this.apiUrl);
+    return this.http.get<Officer[]>(this.configService.officerlist);
   }
 
   addOfficer(officer: Officer): Observable<Officer> {
-    return this.http.post<Officer>(this.apiUrl, officer);
+    return this.http.post<Officer>(this.configService.officerlist, officer);
   }
 
   updateOfficer(id: number, officer: Officer): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, officer);
+    return this.http.put<void>(`${this.configService.officerlist}/${id}`, officer);
   }
 
   deleteOfficer(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.configService.officerlist}/${id}`);
   }
 }

@@ -1,28 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ConfigService } from 'src/app/config.service';
 
+interface Chairmen {
+  id?: string;
+  name: string;
+  from: Date;
+  to: Date;
+  photo: string; // Ensure it's of type string
+} 
 @Injectable({
   providedIn: 'root'
 })
 export class ChairmenListService {
-  private apiUrl = 'https://localhost:7169/api/Chairman';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigService) { }
 
-  getChairman(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getChairmen(): Observable<Chairmen[]> {
+    return this.http.get<Chairmen[]>(this.configService.Chairman);
   }
 
-  addChairman(chairman: FormData) {
-    return this.http.post('/api/Chairman', chairman);
+  addChairman(chairman: FormData): Observable<any> { 
+    return this.http.post(this.configService.Chairman, chairman);
   }
   
-  updateChairman(id: string, chairman: FormData) {
-    return this.http.put(`/api/Chairman/${id}`, chairman);
+  updateChairman(id: string, chairman: FormData): Observable<any> { 
+    return this.http.put(`${this.configService.Chairman}/${id}`, chairman); 
   }    
 
   deleteChairman(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+    return this.http.delete<any>(`${this.configService.Chairman}/${id}`);
   }
 }

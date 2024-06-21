@@ -1,29 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { ConfigService } from 'src/app/config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentTenderService {
-  private apiUrl = 'https://localhost:7169/api/CurrentTenders'; 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigService) { }
 
   getCurrentTenders(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.configService.CurrentTenders);
   }
 
   addCurrentTenders(employee: any): Observable<any> {
-    return this.http.post(this.apiUrl, employee);
+    return this.http.post(this.configService.CurrentTenders, employee);
   }
 
   updateCurrentTenders(id: string, employee: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, employee);
+    return this.http.put(`${this.configService.CurrentTenders}/${id}`, employee);
   }
 
   deleteCurrentTenders(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.configService.CurrentTenders}/${id}`);
   }
 }

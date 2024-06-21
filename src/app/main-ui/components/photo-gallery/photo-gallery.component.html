@@ -1,9 +1,11 @@
-<div class="gallery-container">
-    <h1>Photo Gallery</h1>
-    <div class="gallery-grid">
-      <div class="gallery-item" *ngFor="let photo of photos">
-        <img [src]="'data:image/jpeg;base64,' + photo.photo" alt="Photo {{ photo.id }}">
+
+  <div class="gallery-container">
+    <h1>Gallery Photos</h1>
+    <div class="photo-gallery">
+      <div class="photo-item" *ngFor="let photo of photos">
+        <img [src]="photo.imageUrl" alt="Gallery Photo">
       </div>
     </div>
   </div>
+  
   

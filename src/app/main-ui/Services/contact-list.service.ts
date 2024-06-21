@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ConfigService } from 'src/app/config.service';
 
 interface Contact {
   id: number;
@@ -14,11 +15,10 @@ interface Contact {
   providedIn: 'root'
 })
 export class ContactListService {
-  private apiUrl = 'https://localhost:7169/api/ContactList';
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configService: ConfigService) {
+  }
 
   getContactList(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.apiUrl);
+    return this.http.get<Contact[]>(this.configService.ContactList);
   }
 }

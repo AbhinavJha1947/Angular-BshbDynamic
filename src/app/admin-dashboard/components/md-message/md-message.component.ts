@@ -3,16 +3,19 @@ import { AboutMdMessageService } from 'src/app/admin-dashboard/Services/about-md
 
 interface MdMessage {
   id?: number;
-  text: string;
+  message: string; 
+  createddate?: Date; 
+  updateddate?: Date; 
 }
+
 @Component({
   selector: 'app-md-message',
   templateUrl: './md-message.component.html',
   styleUrls: ['./md-message.component.css']
 })
-export class MdMessageComponent  implements OnInit {
+export class MdMessageComponent implements OnInit {
   messages: MdMessage[] = [];
-  newMessage: MdMessage = { text: '' };
+  newMessage: MdMessage = { message: '' };
 
   constructor(private mdMessageService: AboutMdMessageService) {}
 
@@ -21,36 +24,44 @@ export class MdMessageComponent  implements OnInit {
   }
 
   loadMessages() {
-    this.mdMessageService.getMessages().subscribe(messages => this.messages = messages);
+    this.mdMessageService.getMessages().subscribe(
+      messages => {
+        this.messages = messages;
+      },
+      error => console.error('Error loading messages', error)
+    );
   }
 
   addMessage() {
-    if (this.newMessage.text) {
-      this.mdMessageService.addMessage(this.newMessage).subscribe(message => {
-        this.messages.push(message);
-        this.newMessage = { text: '' };
-      });
+    if (this.newMessage.message) {
+      this.mdMessageService.addMessage(this.newMessage).subscribe(
+        message => {
+          this.messages.push(message);
+          this.newMessage = { message: '' };
+        },
+        error => console.error('Error adding message', error)
+      );
     }
   }
 
-  editMessage(index: number) {
-    const message = this.messages[index];
-    this.newMessage = { ...message };
-    this.deleteMessageById(message.id!);  // Assuming id is always present
-  }
-
-  deleteMessageById(id: number) {
-    this.mdMessageService.deleteMessage(id).subscribe(() => {
-      this.messages = this.messages.filter(message => message.id !== id);
-    });
-  }
-
-  deleteMessage(index: number) {
-    const id = this.messages[index].id;
-    if (id != null) {
-      this.deleteMessageById(id);
+  editMessage(message: MdMessage) {
+    if (message.id !== undefined) {
+      console.log('Edit message with ID:', message.id);
     } else {
-      this.messages.splice(index, 1);
+      console.error('Cannot edit message with undefined ID');
+    }
+  }
+
+  deleteMessage(message: MdMessage) {
+    if (message.id !== undefined) {
+      this.mdMessageService.deleteMessage(message.id).subscribe(
+        () => {
+          this.messages = this.messages.filter(m => m.id !== message.id);
+        },
+        error => console.error('Error deleting message', error)
+      );
+    } else {
+      console.error('Cannot delete message with undefined ID');
     }
   }
 }

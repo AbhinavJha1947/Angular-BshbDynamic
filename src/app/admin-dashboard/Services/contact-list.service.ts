@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ConfigService } from 'src/app/config.service';
 
 interface Contact {
   id?: string;
@@ -15,30 +16,28 @@ interface Contact {
   providedIn: 'root'
 })
 export class ContactListService {
-  private apiUrl = 'https://localhost:7169/api/ContactList';
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configService: ConfigService) { }
 
   getContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.apiUrl).pipe(
+    return this.http.get<Contact[]>(this.configService.ContactList).pipe(
       catchError(this.handleError)
     );
   }
 
   addContact(contact: Contact): Observable<Contact> {
-    return this.http.post<Contact>(this.apiUrl, contact).pipe(
+    return this.http.post<Contact>(this.configService.ContactList, contact).pipe(
       catchError(this.handleError)
     );
   }
 
   updateContact(id: string, contact: Contact): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, contact).pipe(
+    return this.http.put<void>(`${this.configService.ContactList}/${id}`, contact).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteContact(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.delete<void>(`${this.configService.ContactList}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

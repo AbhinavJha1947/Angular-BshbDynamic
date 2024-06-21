@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from 'src/app/config.service';
 
 @Component({
   selector: 'app-feedback',
@@ -13,16 +14,18 @@ export class FeedbackComponent implements OnInit {
     feedbackText: '',
     captcha: ''
   };
-  captchaUrl = 'https://localhost:7169/api/captcha/generate';
+  captchaUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configService: ConfigService) {
+    this.captchaUrl = this.configService.captchaGenerateUrl;
+  }
 
   ngOnInit() {
     this.refreshCaptcha();
   }
 
   onSubmit() {
-    this.http.post('https://localhost:7169/api/captcha/validate', { captchaText: this.feedbackData.captcha })
+    this.http.post(this.configService.captchaValidateUrl, { captchaText: this.feedbackData.captcha })
       .subscribe(response => {
         console.log('CAPTCHA validated successfully', response);
         // Proceed with submitting the feedback
@@ -34,7 +37,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   submitFeedback() {
-    this.http.post('https://localhost:7169/api/feedback', this.feedbackData)
+    this.http.post(this.configService.feedbackUrl, this.feedbackData)
       .subscribe(response => {
         console.log('Feedback submitted successfully', response);
         // Handle success, show a message to the user
@@ -45,11 +48,11 @@ export class FeedbackComponent implements OnInit {
   }
 
   refreshCaptcha() {
-    this.captchaUrl = 'https://localhost:7169/api/captcha/generate?' + Math.random();
+    this.captchaUrl = `${this.configService.captchaGenerateUrl}?${Math.random()}`;
   }
 
   playCaptchaAudio() {
-    const audio = new Audio('https://localhost:7169/api/captcha/audio');
+    const audio = new Audio(this.configService.captchaAudioUrl);
     audio.play();
   }
 }

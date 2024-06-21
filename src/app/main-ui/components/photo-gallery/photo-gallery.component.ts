@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { ConfigService } from 'src/app/config.service';
+ 
 interface Photo {
   id: number;
   photo: string;
@@ -12,18 +13,23 @@ interface Photo {
   styleUrls: ['./photo-gallery.component.css']
 })
 export class PhotoGalleryComponent implements OnInit {
-  photos: Photo[] = [];
+  photos: any[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigService) { }
 
   ngOnInit(): void {
     this.fetchPhotos();
   }
 
   fetchPhotos(): void {
-    this.http.get<Photo[]>('https://localhost:7210/api/PhotoGallery')
-      .subscribe(data => {
-        this.photos = data;
+    this.http.get<any[]>(this.configService.PhotoGallery)
+      .subscribe(response => {
+        this.photos = response.map(photo => ({
+          id: photo.id,
+          imageUrl: 'data:image/jpeg;base64,' + photo.photo  
+        }));
+      }, error => {
+        console.error(error);
       });
   }
 }

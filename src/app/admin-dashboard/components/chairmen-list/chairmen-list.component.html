@@ -1,6 +1,6 @@
-<h2>Chairmen List</h2>
+<h2>Contact List</h2>
 
-<form (ngSubmit)="onSubmit()" #chairmenForm="ngForm" enctype="multipart/form-data">
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
   <div>
     <label for="name">Name</label>
     <input type="text" id="name" required [(ngModel)]="chairmen.name" name="name" #name="ngModel">
@@ -19,19 +19,37 @@
   <div>
     <label for="photo">Photo</label>
     <input type="file" id="photo" (change)="onPhotoSelected($event)" name="photo" accept="image/*">
-    <div *ngIf="!chairmen.photo && chairmenForm.submitted" class="error">Photo is required</div>
-    <img *ngIf="chairmen.photo" [src]="chairmen.photo" alt="Selected photo">
+    <div *ngIf="!chairmen.photo && contactForm.submitted" class="error">Photo is required</div>
+    <img *ngIf="chairmen.photo" [src]="chairmen.photo" alt="Selected photo" style="max-width: 200px;">
   </div>
-  <button type="submit" [disabled]="chairmenForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
+  <button type="submit" [disabled]="contactForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
 </form>
 
-<div *ngIf="name.value">
+<div class="chairmen-list">
   <h3>Chairmen List</h3>
-  <ul>
-    <li *ngFor="let chairman of name.value">
-      {{ chairman.name }} - From: {{ chairman.from | date:'medium' }}, To: {{ chairman.to | date:'medium' }}
-      <button (click)="onEdit(chairman)">Edit</button>
-      <button (click)="onDelete(chairman.id)">Delete</button>
-    </li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No</th>
+        <th>Name</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Photo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let chairmen of chairmenList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ chairmen.name }}</td>
+        <td>{{ chairmen.from | date:'medium' }}</td>
+        <td>{{ chairmen.to | date:'medium' }}</td>
+        <td><img *ngIf="chairmen.photo" [src]="chairmen.photo" alt="Chairman Photo" style="max-width: 100px;"></td>
+        <td>
+          <button (click)="onEdit(chairmen)">Edit</button>
+          <button *ngIf="chairmen.id" (click)="onDelete(chairmen.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

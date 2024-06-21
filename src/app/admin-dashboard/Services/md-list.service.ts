@@ -13,7 +13,7 @@ interface MdListItem {
   providedIn: 'root'
 })
 export class MdListService  {
-  private apiUrl = 'https://localhost:7210/api/md-list';
+  private apiUrl = 'https://localhost:7169/api/md-list';
 
   constructor(private http: HttpClient) { }
 

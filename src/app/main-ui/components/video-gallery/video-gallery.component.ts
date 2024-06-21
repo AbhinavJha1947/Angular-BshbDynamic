@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from 'src/app/config.service';
 
 interface Video {
   id: number;
@@ -14,18 +15,23 @@ interface Video {
   styleUrls: ['./video-gallery.component.css']
 })
 export class VideoGalleryComponent implements OnInit {
-  videos: Video[] = [];
+  videos: any[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigService) { }
 
   ngOnInit(): void {
     this.fetchVideos();
   }
 
   fetchVideos(): void {
-    this.http.get<Video[]>('https://localhost:7210/api/VideoGallery')
-      .subscribe(data => {
-        this.videos = data;
+    this.http.get<any[]>(this.configService.VideoGallery)
+      .subscribe(response => {
+        this.videos = response.map(video => ({
+          id: video.id,
+          videoUrl: URL.createObjectURL(new Blob([new Uint8Array(video.video)], { type: 'video/mp4' }))
+        }));
+      }, error => {
+        console.error(error);
       });
   }
 }

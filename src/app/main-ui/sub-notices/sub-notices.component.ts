@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from 'src/app/config.service';
 
 interface SubNotice {
   id?: number;
@@ -15,14 +16,14 @@ interface SubNotice {
 export class SubNoticesComponent implements OnInit {
   subNotices: SubNotice[] = [];
 
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private configService: ConfigService) {
+  }
   ngOnInit(): void {
     this.getSubNotices();
   }
 
   getSubNotices() {
-    this.http.get<SubNotice[]>('https://localhost:7169/api/SubNotice').subscribe(
+    this.http.get<SubNotice[]>(this.configService.SubNotice).subscribe(
       (response) => {
         this.subNotices = response;
       },

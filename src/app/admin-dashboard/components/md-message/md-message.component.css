@@ -1,70 +1,75 @@
 .container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    margin-right: 10px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .message-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .message-list li {
-    margin-bottom: 10px;
-  }
-  
-  .message {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .message p {
-    margin: 0 0 5px;
-  }
-  
-  .message button {
-    padding: 5px 10px;
-  }
-  
+  width: 100%;
+  max-width: 800px; /* Adjusted for better readability */
+  margin: 20px auto; /* Added margin for better centering */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Increased spacing between form groups */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+button {
+  padding: 10px 20px; /* Increased padding for better click area */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.message-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Added margin between form and table */
+}
+
+.message-table th, .message-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.message-table th {
+  background-color: #f2f2f2;
+}
+
+.message-table td {
+  vertical-align: top;
+}
+
+.message-table button {
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+.message-table button:last-child {
+  margin-right: 0;
+}
