@@ -26,7 +26,11 @@ export class ConfigService {
   readonly mdlisturl = `${this.apiBaseUrl}/md-list`; 
   readonly PhotoGallery = `${this.apiBaseUrl}/PhotoGallery`;
   readonly VideoGallery = `${this.apiBaseUrl}/VideoGallery`;
+  readonly userloginsendotp = `${this.apiBaseUrl}/User/sign-up/request-otp-for-login`;
+  readonly userloginverifyotp = `${this.apiBaseUrl}/User/sign-up/verify-otp`;
 
+  readonly Adminlogin = `${this.apiBaseUrl}/Admin/login`;
+  readonly Adminloginverify = `${this.apiBaseUrl}/Admin/verify-otp`;
 
   constructor() { }
 }

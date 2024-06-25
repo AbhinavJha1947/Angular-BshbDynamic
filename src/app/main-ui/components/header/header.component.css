@@ -1,78 +1,207 @@
-/* Reset some default styles for better cross-browser consistency */
-body, ul, li, nav, a {
+body, html {
   margin: 0;
   padding: 0;
-  list-style: none;
-  text-decoration: none;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #ffffff;
 }
 
 .header {
-  background-color: #b5a322;
-  width: 100%;
-  margin: auto;
+  background-color: #ffffff;
 }
 
 .top-bar {
-  background-color: #058131;
-  padding: 10px 0;
+  background-color: #ffffff;
+  padding: 0px 0;
 }
 
-.top-bar .row {
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.row {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-.header-main {
+.gov-section, .nav-section {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  position: relative;
 }
 
-.first-logo {
-  flex: 0 0 30%;
-  text-align: center;
+.gov-india {
+  flex: 0 0 20%;
+  justify-content: flex-end;
+  padding-right: 10px;
 }
 
-.other-logos {
-  flex: 0 0 65%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+.ministry {
+  flex: 0 0 40%;
+  padding-left: 10px;
 }
 
-.logo {
-  flex: 1 0 30%; /* Adjust flex to fit the logos as needed */
-  text-align: center;
+.nav-section:nth-child(3) {
+  flex: 0 0 10%;
 }
 
-.logo-img {
-  width: 80%; /* Adjust size as needed */
-}
-
-.other-logo-img {
-  width: 80%; /* Adjust size as needed */
-}
-
-.search-bar {
+.nav-section:nth-child(4) {
   flex: 0 0 5%;
+}
+
+.nav-section:nth-child(5) {
+  flex: 0 0 5%;
+}
+
+.nav-section:nth-child(6) {
+  flex: 0 0 5%;
+}
+
+.hindi {
+  flex: 0 0 15%;
+}
+
+.gov-section a, .nav-section a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.gov-section::after, 
+.nav-section::after {
+  color: #000;
+  position: absolute;
+  right: -10px;
+}
+
+.gov-section:last-child::after, 
+.nav-section:last-child::after {
+  content: "";
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.nav-section .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 1px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-section:hover .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  margin-bottom: 10px;
+}
+
+.dropdown li:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-section select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 0 0 0;
+  background-color: #ffffff;
+}
+
+.header-wrapper {
+  background-color: #f8f9fa;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo p {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header__logo p li {
+  list-style: none; 
+  margin: 0;
+}
+
+.header__logo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-decoration: none;
+}
+
+.header__logo img {
+  margin-right: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  font-size: large;
+}
+
+.right-content {
+  display: flex;
+}
+
+.float-element {
+  margin-right: 150px;
+}
+
+.float-element a {
+  display: block;
+}
+
+.float-element img {
+  width: 220px;
+  height: auto;
 }
 
 @media (max-width: 768px) {
-  .header-main {
+  .row {
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  .first-logo, .other-logos, .search-bar {
-    flex: 1 0 auto;
-    text-align: center;
+  .gov-section, .nav-section {
+    margin: 5px 0;
   }
 
-  .logo {
-    margin-bottom: 5px;
+  .nav-section .dropdown {
+    left: auto;
+    right: 0;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-right {
+    margin-top: 20px;
   }
 }

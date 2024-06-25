@@ -9,15 +9,6 @@ interface Officer {
   details: string;
 }
 
-interface TenderItem {
-  date: number;
-  monthYear: string;
-  description: string;
-}
-interface WhatsNewItem {
-  description: string;
-}
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -25,22 +16,9 @@ interface WhatsNewItem {
 })
 export class HomePageComponent implements OnInit {
   officers: Officer[] = [];
+  selectedTab: number = 0; // Default to 'Events' tab
 
-  whatsNewItems: WhatsNewItem[] = [
-    { description: "Description of Whats's New 1 goes here - File type (size) DD-MM-YYYY." },
-    { description: "Description of Whats's New 2 goes here - File type (size) DD-MM-YYYY." },
-    { description: "Description of Whats's New 3 goes here - File type (size) DD-MM-YYYY." },
-    { description: "Description of Whats's New 4 goes here - File type (size) DD-MM-YYYY." }
-  ];
-  tenders: TenderItem[] = [
-    { date: 0o1, monthYear: "MM YYYY", description: "Description of Tenders 1 goes here - File type (size)." },
-    { date: 0o2, monthYear: "MM YYYY", description: "Description of Tenders 2 goes here - File type (size)." },
-    { date: 0o3, monthYear: "MM YYYY", description: "Description of Tenders 3 goes here - File type (size)." }
-  ];
-
-  constructor(private http: HttpClient) { 
-    console.log('HomePageComponent initialized');
-  }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getOfficers();
@@ -61,5 +39,10 @@ export class HomePageComponent implements OnInit {
       }
     );
   }
-}
 
+  selectTab(index: number) {
+    this.selectedTab = index;
+    // Prevent default anchor click behavior which scrolls to top
+    return false;
+  }
+}

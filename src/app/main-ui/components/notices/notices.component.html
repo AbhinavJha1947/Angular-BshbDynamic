@@ -1,21 +1,23 @@
-<section class="latest-news">
-    <div class="btm-news">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="newscontent">
-            <div>नवीनतम सूचनाएँ</div>
-            <marquee behavior="scroll" scrollamount="5" direction="left">
-              <ng-container *ngFor="let notice of notices">
-                <a [href]="notice.url" target="_blank">
-                  <img alt="" src="assets/images/new.gif" width="60px" />
-                  &nbsp;{{ notice.text }}
-                </a>
-                &nbsp;&nbsp;
-              </ng-container>
-            </marquee>
+<section id="fontSize" class="wrapper body-wrapper">
+  <section class="wrapper news-section">
+    <div class="carousel-container">
+      <div class="merged-section" #newsSection>
+        <div class="news-header">
+          <p style="color: red;">Latest Updates</p>
+          <div class="controls">
+            <button (click)="prev()" title="Previous">&lt;</button>
+            <button (click)="togglePause()" title="Pause">{{ isPaused ? '>' : '||' }}</button>
+            <button (click)="next()" title="Next">&gt;</button>
           </div>
+        </div>
+        <div id="flexCarousel2" class="news-section2">
+          <ul class="slides news-slide" id="newsSlide">
+            <li *ngFor="let update of updates">
+              <span>{{ update }}</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
-  
+</section>

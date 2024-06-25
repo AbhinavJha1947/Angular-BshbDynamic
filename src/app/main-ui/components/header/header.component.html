@@ -1,26 +1,69 @@
-<header class="header" style="background-color:#b5a322;">
-  <div class="header-main row">
-    <div class="first-logo col-md-3 col-sm-3" *ngIf="headerImages.length > 0">
-      <ng-container *ngIf="headerImages[0]">
-        <a [href]="headerImages[0]['url1']" target="_blank" *ngIf="headerImages[0]['url1'] && getImageSrc(headerImages[0]['img1'])">
-          <img [src]="getImageSrc(headerImages[0]['img1'])" alt="Logo" class="img-responsive logo-img" />
-        </a>
-      </ng-container>
+<header class="header">
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="gov-section gov-india">
+          <a target="_blank" href="https://india.gov.in/hi" title="भारत सरकार ( बाहरी वेबसाइट जो एक नई विंडो में खुलती है)" lang="hi">भारत सरकार</a>
+        </div>
+        <div class="gov-section ministry">
+          <a target="_blank" href="https://india.gov.in/" title="Government of India, External Link that opens in a new window">Government of India</a>
+        </div>
+        <div class="nav-section">
+          <a href="javascript:void(0);" (click)="skipToMainContent()" title="Skip to main content">Skip to main content</a>
+        </div>
+        <div class="nav-section">
+          <a id="toggleAccessibility" title="Accessibility Dropdown">
+            <img class="icon" src="assets/images/ico-accessibility.png" alt="Accessibility Dropdown" />
+          </a>
+          <ul class="dropdown">
+            <li><a onClick="set_font_size('increase')" title="Increase font size">A<sup>+</sup></a></li>
+            <li><a onClick="set_font_size()" title="Reset font size">A<sup>&nbsp;</sup></a></li>
+            <li><a onClick="set_font_size('decrease')" title="Decrease font size">A<sup>-</sup></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <a id="toggleSocial" title="Social Medias">
+            <img class="icon" src="assets/images/ico-social.png" alt="Social Medias" />
+          </a>
+          <ul class="dropdown">
+            <li><a target="_blank" title="Facebook" href="http://www.facebook.com/"><img alt="Facebook Page" src="assets/images/ico-facebook.png"></a></li>
+            <li><a target="_blank" title="Twitter" href="http://www.twitter.com/"><img alt="Twitter Page" src="assets/images/ico-twitter.png"></a></li>
+            <li><a target="_blank" title="YouTube" href="http://www.youtube.com/"><img alt="YouTube Page" src="assets/images/ico-youtube.png"></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <a routerLink="/sitemap" title="Sitemap"><img class="icon" src="assets/images/ico-sitemap.png" alt="Sitemap" /></a>
+        </div>
+        <div class="nav-section hindi">
+          <select title="Select Language">
+            <option>English</option>
+            <option>हिन्दी</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <div class="other-logos col-md-7 col-sm-7">
-      <ng-container *ngFor="let image of headerImages.slice(1)">
-        <ng-container *ngFor="let idx of [2, 3, 4, 5, 6, 7, 8]">
-          <h1 class="logo" *ngIf="image['url' + idx] && getImageSrc(image['img' + idx])">
-            <a [href]="image['url' + idx]" target="_blank">
-              <img [src]="getImageSrc(image['img' + idx])" alt="Logo" class="img-responsive other-logo-img" />
-            </a>
-          </h1>
-        </ng-container>
-      </ng-container>
-    </div>
-    <!-- <div class="search-bar col-md-2 col-sm-2">
-      <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." (keydown.enter)="search()">
-      <button (click)="search()">Search</button>
-    </div> -->
   </div>
 </header>
+
+<section class="wrapper header-wrapper">
+  <div class="container common-container four_content header-container">
+    <h2 class="logo">
+      <a href="home.html" title="Home" rel="home" class="header__logo" id="logo">
+        <img class="national_emblem" src="assets/images/emblem-dark.png" alt="national emblem">
+        <p>
+          <li>मंत्रालय / विभाग नाम</li>                       
+          <li>Ministry of / Department Name</li>
+        </p>
+      </a>
+    </h2>
+    <div class="header-right clearfix">
+      <div class="right-content clearfix">
+        <div class="float-element">
+          <a class="sw-logo" target="_blank" href="https://swachhbharat.mygov.in/" title="Swachh Bharat, External link that open in a new windows">
+            <img src="assets/images/swach-bharat.png" alt="Swachh Bharat">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

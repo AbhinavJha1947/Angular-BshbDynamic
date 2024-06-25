@@ -34,7 +34,6 @@ import { OldSchemesComponent } from 'src/app/main-ui/components/old-schemes/old-
 import { UserLoginComponent } from 'src/app/main-ui/components/user-login/user-login.component';
 import { SectionOfficerLoginComponent } from 'src/app/main-ui/components/section-officer-login/section-officer-login.component';
 import { SamadhanInchargeLoginComponent } from 'src/app/main-ui/components/samadhan-incharge-login/samadhan-incharge-login.component';
-import { SubNoticesComponent } from 'src/app/main-ui/sub-notices/sub-notices.component';
 import { AboutUsComponent } from 'src/app/main-ui/components/about-us/about-us.component';
 import { HomePageComponent } from 'src/app/main-ui/components/home-page/home-page.component';
 import { FeedbackComponent } from 'src/app/main-ui/components/feedback/feedback.component';
@@ -44,9 +43,12 @@ import { ImageSliderComponent } from 'src/app/main-ui/components/image-slider/im
 import { CarouselModule } from '@syncfusion/ej2-angular-navigations';
 import { DataService } from 'src/app/main-ui/data.service';
 import { SitemapComponent } from 'src/app/main-ui/components/sitemap/sitemap.component';
+import { CarouselComponent } from 'src/app/main-ui/components/carousel/carousel.component';
+import { FocusService } from '../Services/focus.service';
 
 @NgModule({
   declarations: [
+    CarouselComponent,
     HeaderComponent,
     FeedbackComponent,
     SitemapComponent,
@@ -83,7 +85,6 @@ import { SitemapComponent } from 'src/app/main-ui/components/sitemap/sitemap.com
     UserLoginComponent,
     SectionOfficerLoginComponent,
     SamadhanInchargeLoginComponent,
-    SubNoticesComponent,
     AboutUsComponent,
     HomePageComponent
   ],
@@ -94,7 +95,7 @@ import { SitemapComponent } from 'src/app/main-ui/components/sitemap/sitemap.com
     FormsModule,
     CarouselModule
   ],
-  providers: [DataService],
+  providers: [DataService,FocusService],
   exports: [
     // HeaderComponent,
     // FooterComponent,

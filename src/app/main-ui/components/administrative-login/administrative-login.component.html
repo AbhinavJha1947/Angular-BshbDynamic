@@ -1,15 +1,25 @@
-<div class="login-container">
-    <h2>Administrative Login</h2>
-    <form (ngSubmit)="login()">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" [(ngModel)]="username" name="username">
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password">
-      </div>
-      <button type="submit">Login</button>
-    </form>
-  </div>
-  
+<div class="login-container" *ngIf="!isOtpRequested">
+  <h2>Administrative Login</h2>
+  <form (ngSubmit)="login()">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="username" name="username">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password">
+    </div>
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+<div class="otp-container" *ngIf="isOtpRequested">
+  <h2>OTP Verification</h2>
+  <form (ngSubmit)="verifyOtp()">
+    <div>
+      <label for="otp">OTP:</label>
+      <input type="text" id="otp" [(ngModel)]="otp" name="otp">
+    </div>
+    <button type="submit">Verify OTP</button>
+  </form>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/main-ui/Services/auth.service';
+import { AdminloginService } from '../../Services/adminlogin.service';
 
 @Component({
   selector: 'app-administrative-login',
@@ -10,14 +10,37 @@ import { AuthService } from 'src/app/main-ui/Services/auth.service';
 export class AdministrativeLoginComponent {
   username: string = '';
   password: string = '';
+  otp: string = '';
+  isOtpRequested: boolean = false;
+  email: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private adminloginService: AdminloginService, private router: Router) { }
 
   login(): void {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/admin']);
-    } else {
-      alert('Invalid credentials');
-    }
+    this.adminloginService.login(this.username, this.password).subscribe(
+      (response: any) => {
+        alert(response.message);
+        this.isOtpRequested = true;
+        this.email = response.email; 
+      },
+      (error: any) => {
+        alert('Invalid credentials');
+      }
+    );
+  }
+
+  verifyOtp(): void {
+    console.log('Verifying OTP:', this.otp, 'for email:', this.email);
+    this.adminloginService.verifyOtp(this.email, this.otp).subscribe(
+      (response: any) => {
+        console.log('Verification response:', response);
+        alert('OTP verified successfully');
+        this.router.navigate(['/admin']);
+      },
+      (error: any) => {
+        console.error('Verification error:', error);
+        alert('Invalid OTP or OTP has expired');
+      }
+    );
   }
 }

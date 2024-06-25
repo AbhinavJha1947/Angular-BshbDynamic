@@ -29,7 +29,6 @@ import { OldSchemesComponent } from 'src/app/main-ui/components/old-schemes/old-
 import { UserLoginComponent } from 'src/app/main-ui/components/user-login/user-login.component';
 import { SectionOfficerLoginComponent } from 'src/app/main-ui/components/section-officer-login/section-officer-login.component';
 import { SamadhanInchargeLoginComponent } from 'src/app/main-ui/components/samadhan-incharge-login/samadhan-incharge-login.component';
-import { SubNoticesComponent } from 'src/app/main-ui/sub-notices/sub-notices.component';
 import { AboutUsComponent } from 'src/app/main-ui/components/about-us/about-us.component';
 import { HomePageComponent } from 'src/app/main-ui/components/home-page/home-page.component';
 import { FeedbackComponent } from 'src/app/main-ui/components/feedback/feedback.component';
@@ -72,7 +71,6 @@ const routes: Routes = [
       { path: 'old-schemes', component: OldSchemesComponent },
       { path: 'user-login', component: UserLoginComponent },
       { path: 'section-officer-login', component: SectionOfficerLoginComponent },
-      { path: 'sub-notices', component: SubNoticesComponent },
       { path: 'samadhan-incharge-login', component: SamadhanInchargeLoginComponent },
       { path: 'about-us', component: AboutUsComponent },
 

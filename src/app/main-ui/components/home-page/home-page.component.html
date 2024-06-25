@@ -1,36 +1,103 @@
-<div>
+<div class="home-container" id="mainContent">
   <h1>Welcome to the Home Page</h1>
   <p>WELCOME TO Ministry/Department</p>
   <p>
     Welcome to the website of Ministry/Department, Government of India.
   </p>
   <p>
-    An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves. An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves. Bihar State Housing board (BSHB) represents a statutory authority constituted by the Government of Bihar under the Bihar State Housing Board act, 1982 and is mandated with the development of various housing schemes & related infrastructural facilities in the state.
+    An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purposes that the ministry website serves. An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purposes that the ministry website serves. Bihar State Housing Board (BSHB) represents a statutory authority constituted by the Government of Bihar under the Bihar State Housing Board Act, 1982 and is mandated with the development of various housing schemes & related infrastructural facilities in the state.
   </p>
-  <div class="officers-container">
-    <div *ngFor="let officer of officers" class="officer-item">
-      <img [src]="officer.image" alt="{{ officer.name }}" class="officer-img">
-      <p><strong> {{ officer.name }} </strong></p>
-      <p><strong>{{ officer.designation }} </strong></p>
-      <p>{{ officer.details }}</p>
-    </div>
-  </div>
-  
-  <div class="slider-container">
-    <h2>What's New</h2>
-    <div class="slider">
-      <div *ngFor="let item of whatsNewItems" class="slide">
-        <p>{{ item.description }}</p>
+  <div class="content-section">
+    <div class="wrapper home-banner tab-section">
+      <div class="container common-container four_content">
+        <div class="page-tab clearfix">
+          <div class="page-tab-res clearfix">
+            <div id="parentHorizontalTab">
+              <ul class="resp-tabs-list hor_1">
+                <li [class.resp-tab-active]="selectedTab === 0"><a (click)="selectTab(0)">Events</a></li>
+                <li [class.resp-tab-active]="selectedTab === 1"><a (click)="selectTab(1)">What's New</a></li>
+                <li [class.resp-tab-active]="selectedTab === 2"><a (click)="selectTab(2)">Awards</a></li>
+                <li [class.resp-tab-active]="selectedTab === 3"><a (click)="selectTab(3)">Press Releases</a></li>
+                <li [class.resp-tab-active]="selectedTab === 4"><a (click)="selectTab(4)">Tender</a></li>
+              </ul>
+              <div class="resp-tabs-container hor_1">
+                <div class="tab-content" *ngIf="selectedTab === 0">
+                  <ul class="content_list date-list">
+                    <li>
+                      <div class="date"><span>DD</span><em>MM-YYYY</em></div>
+                      <div class="list-content">An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves. An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves.
+
+                        An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves.</div>
+                    </li>
+                    <li>
+                      <div class="date"><span>DD</span><em>MM-YYYY</em></div>
+                      <div class="list-content">Description of Events 2 goes here.</div>
+                    </li>
+                    <li>
+                      <div class="date"><span>DD</span><em>MM-YYYY</em></div>
+                      <div class="list-content">An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves. An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves.
+
+                        An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purpose that the ministry website serves.</div>
+                    </li>
+                  </ul>
+                  <div class="view-footer-tab"><a href="#" title="Click here to know more"><span>Read more</span></a></div>
+                </div>
+                <div class="tab-content" *ngIf="selectedTab === 1">
+                  <ul class="content_list list">
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of What's New 1 goes here.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of What's New 2 goes here.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of What's New 3 goes here.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of What's New 4 goes here.</a></li>
+                  </ul>
+                  <div class="view-footer-tab"><a href="#" title="Click here to know more"><span>Read more</span></a></div>
+                </div>
+                <div class="tab-content" *ngIf="selectedTab === 2">
+                  <ul class="content_list list">
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Awards 1 goes here.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Awards 2 goes here.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Awards 3 goes here.</a></li>
+                  </ul>
+                  <div class="view-footer-tab"><a href="#" title="Click here to know more"><span>Read more</span></a></div>
+                </div>
+                <div class="tab-content" *ngIf="selectedTab === 3">
+                  <ul class="content_list list">
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Press Releases 1 goes here dd-mm-yyy.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Press Releases 2 goes here dd-mm-yyy.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Press Releases 3 goes here dd-mm-yyy.</a></li>
+                  </ul>
+                  <div class="view-footer-tab"><a href="#" title="Click here to know more"><span>Read more</span></a></div>
+                </div>
+                <div class="tab-content" *ngIf="selectedTab === 4">
+                  <ul class="content_list list">
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Tender 1 goes here dd-mm-yyy - dd-mm-yyyy.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Tender 2 goes here dd-mm-yyy - dd-mm-yyyy.</a></li>
+                    <li><i class="fa fa-arrow-right"></i><a href="#">Description of Tender 3 goes here dd-mm-yyy - dd-mm-yyyy.</a></li>
+                  </ul>
+                  <div class="view-footer-tab"><a href="#" title="Click here to know more"><span>Read more</span></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="slider-container">
-    <h2>Tenders</h2>
-    <div class="slider">
-      <div *ngFor="let item of tenders" class="slide">
-        <div class="date"><span>{{ item.date }}</span><em>{{ item.monthYear }}</em></div>
-        <p>{{ item.description }}</p>
+    <div class="side-links clearfix">
+      <div class="side-link">
+        <div class="imt-logo">
+          <img src="assets/images/1.jpg" alt="Logo 1">
+        </div>
+        <div class="imt-logo">
+          <img src="assets/images/2.jpeg" alt="Logo 2">
+        </div>
+      </div>
+      <div class="side-link2">
+        <div class="imt-logo">
+          <img src="assets/images/3.png" alt="Logo 3">
+        </div>
+        <div class="imt-logo">
+          <img src="assets/images/4.jpeg" alt="Logo 4">
+        </div>
       </div>
     </div>
   </div>

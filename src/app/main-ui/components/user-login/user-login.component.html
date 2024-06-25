@@ -1,11 +1,22 @@
 <div class="login-container">
-    <h2>User Login</h2>
-    <form (ngSubmit)="login()">
-      <div>
-        <label for="mobno">Your Mobile No.*</label>
-        <input type="text" id="mobno" [(ngModel)]="mobno" name="username">
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+  <h2>User Login</h2>
+  <form *ngIf="!isOtpRequested" (ngSubmit)="requestOtp()">
+    <div>
+      <label for="email">Your Email*</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required>
+    </div>
+    <button type="submit">Request OTP</button>
+  </form>
+
+  <form *ngIf="isOtpRequested && !isOtpVerified" (ngSubmit)="verifyOtp()">
+    <div>
+      <label for="otp">Enter OTP*</label>
+      <input type="text" id="otp" [(ngModel)]="otp" name="otp" required>
+    </div>
+    <button type="submit">Verify OTP</button>
+  </form>
+
+  <div *ngIf="isOtpVerified">
+    <p>OTP verified successfully. You are logged in!</p>
   </div>
-  
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { FocusService } from '../../Services/focus.service'; 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   searchQuery: string = '';
   searchResults: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private focusService: FocusService) {}
 
   ngOnInit(): void {
     this.getHeaderImages();
@@ -24,6 +24,20 @@ export class HeaderComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching header images:', error);
+      }
+    );
+  }
+
+  skipToMainContent() {
+    console.log("Skip to main content clicked");
+    this.focusService.focusMainContent(
+      (el, name, value) => {
+        console.log(`Setting attribute ${name}=${value} on`, el);
+        el.nativeElement.setAttribute(name, value);
+      },
+      el => {
+        console.log("Focusing on", el);
+        el.nativeElement.focus();
       }
     );
   }

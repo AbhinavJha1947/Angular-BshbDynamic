@@ -1,33 +1,91 @@
-.latest-news {
-    background-color: blue;
-    padding: 20px;
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.news-section {
+  background-color: #ffffff; /* White background */
+  padding: 0px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.merged-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff; /* Blue background for the header */
+  padding: 0px;
+  border-radius: 5px 5px 0 0;
+  color: rgb(27, 26, 26);
+}
+
+.news-header p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  background-color: #fff;
+  border: none;
+  color: #141618;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.controls button:hover {
+  background-color: #ddd;
+}
+
+.news-section2 {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff; /* Dark blue background */
+  border-radius: 0 0 5px 5px;
+  padding: 0px 0;
+}
+
+.news-slide {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.news-slide li {
+  display: inline-block;
+  color: rgb(15, 14, 14);
+  font-size: 18px;
+  padding: 0 20px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
   }
-  
-  .newshead {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    margin-bottom: 10px;
+  100% {
+    transform: translateX(-100%);
   }
-  
-  .newscontent {
-    background-color: #003366;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  
-  .newscontent marquee {
-    color: white;
-    font-size: 18px;
-  }
-  
-  .newscontent a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .newscontent a img {
-    vertical-align: middle;
-  }
-  
+}
+
+.paused {
+  animation-play-state: paused !important;
+}
