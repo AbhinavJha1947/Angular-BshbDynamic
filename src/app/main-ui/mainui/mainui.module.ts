@@ -41,7 +41,6 @@ import { TermsandconditionComponent } from 'src/app/main-ui/components/termsandc
 import { WebsitePolicyComponent } from 'src/app/main-ui/components/website-policy/website-policy.component';
 import { ImageSliderComponent } from 'src/app/main-ui/components/image-slider/image-slider.component';
 import { CarouselModule } from '@syncfusion/ej2-angular-navigations';
-import { DataService } from 'src/app/main-ui/data.service';
 import { SitemapComponent } from 'src/app/main-ui/components/sitemap/sitemap.component';
 import { CarouselComponent } from 'src/app/main-ui/components/carousel/carousel.component';
 import { FocusService } from '../Services/focus.service';
@@ -95,7 +94,7 @@ import { FocusService } from '../Services/focus.service';
     FormsModule,
     CarouselModule
   ],
-  providers: [DataService,FocusService],
+  providers: [FocusService],
   exports: [
     // HeaderComponent,
     // FooterComponent,

@@ -1,32 +1,51 @@
 .carousel-wrapper {
-    background-color: #d4c4c4;
-    padding: 0px 0;
-  }
-  
-  .carousel-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .flexslider {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .slides li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  
-  .slides img {
-    width: 150px;
-    height: auto;
-    border-radius: 5px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .slides img:hover {
-    transform: scale(1.05);
-  }
-  
+  background-color: #d4c4c4;
+  padding: 0px 0;
+}
+
+.carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.flexslider {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slides {
+  display: flex;
+  overflow: hidden;
+}
+
+.slides li {
+  flex: 0 0 auto;
+  width: 150px;
+  margin: 0 10px;
+}
+
+.slides img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slides img:hover {
+  transform: scale(1.05);
+}
+
+.nav {
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.control {
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+}

@@ -18,12 +18,43 @@ body {
   flex-wrap: wrap;
   gap: 20px;
 }
+/* Styling for the photo gallery */
+.photo-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.photo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.photo-text {
+  flex: 1;
+  max-width: 50%;
+}
+
+.photo-images {
+  flex: 1;
+  max-width: 50%;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.photo-images img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* Styling for officers section */
 .officers-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 2px;
 }
 
 .officer-item {

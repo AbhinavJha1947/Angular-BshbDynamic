@@ -1,9 +1,0 @@
-<h2>Manage Map</h2>
-<form (ngSubmit)="onSubmit()" #mapForm="ngForm">
-  <div>
-    <label for="url">Map Url</label>
-    <input type="text" id="url" required [(ngModel)]="map.url" name="url" #url="ngModel">
-    <div *ngIf="url.invalid && url.touched" class="error">url is required</div>
-  </div>
-  <button type="submit" [disabled]="mapForm.invalid">Submit</button>
-</form>

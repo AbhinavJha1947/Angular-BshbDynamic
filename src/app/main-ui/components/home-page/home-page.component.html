@@ -1,12 +1,16 @@
 <div class="home-container" id="mainContent">
-  <h1>Welcome to the Home Page</h1>
-  <p>WELCOME TO Ministry/Department</p>
-  <p>
-    Welcome to the website of Ministry/Department, Government of India.
-  </p>
-  <p>
-    An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purposes that the ministry website serves. An informative text section that outlines the work portfolio of the ministry and the initiatives/ schemes and other useful purposes that the ministry website serves. Bihar State Housing Board (BSHB) represents a statutory authority constituted by the Government of Bihar under the Bihar State Housing Board Act, 1982 and is mandated with the development of various housing schemes & related infrastructural facilities in the state.
-  </p>
+  <h1>WELCOME TO Ministry/Department</h1>
+  <div class="photo-gallery">
+    <div class="photo-item" *ngFor="let item of data">
+      <div class="photo-text">
+        <p><strong>{{item.text}}</strong></p>
+      </div>
+      <div class="photo-images">
+        <img [src]="item.chiefministerImageUrl" alt="Chief Minister Image">
+        <img [src]="item.departmentministerImageUrl" alt="Department Minister Image">
+      </div>
+    </div>
+  </div>
   <div class="content-section">
     <div class="wrapper home-banner tab-section">
       <div class="container common-container four_content">
@@ -83,20 +87,14 @@
     </div>
 
     <div class="side-links clearfix">
-      <div class="side-link">
-        <div class="imt-logo">
-          <img src="assets/images/1.jpg" alt="Logo 1">
+      <div class="side-link" *ngFor="let officer of officers">
+        <div class="officer-img">
+          <img [src]="officer.image" alt="{{officer.name}}">
         </div>
-        <div class="imt-logo">
-          <img src="assets/images/2.jpeg" alt="Logo 2">
-        </div>
-      </div>
-      <div class="side-link2">
-        <div class="imt-logo">
-          <img src="assets/images/3.png" alt="Logo 3">
-        </div>
-        <div class="imt-logo">
-          <img src="assets/images/4.jpeg" alt="Logo 4">
+        <div class="officer-info">
+          <h3>{{officer.name}}</h3>
+          <p>{{officer.designation}}</p>
+          <p>{{officer.details}}</p>
         </div>
       </div>
     </div>

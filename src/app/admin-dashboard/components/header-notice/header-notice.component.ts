@@ -38,6 +38,7 @@ export class HeaderNoticeComponent implements OnInit {
   addNotice() {
     if (this.editingNotice) {
       this.updateNotice();
+      this.getNotices();
     } else {
       this.http.post<Notice>('https://localhost:7169/api/Notice', this.newNotice).subscribe(
         (response) => {

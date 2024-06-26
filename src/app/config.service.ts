@@ -28,9 +28,13 @@ export class ConfigService {
   readonly VideoGallery = `${this.apiBaseUrl}/VideoGallery`;
   readonly userloginsendotp = `${this.apiBaseUrl}/User/sign-up/request-otp-for-login`;
   readonly userloginverifyotp = `${this.apiBaseUrl}/User/sign-up/verify-otp`;
-
   readonly Adminlogin = `${this.apiBaseUrl}/Admin/login`;
   readonly Adminloginverify = `${this.apiBaseUrl}/Admin/verify-otp`;
+  
+  readonly Banner =`${this.apiBaseUrl}/Banner`;
+  readonly carouselfooter =`${this.apiBaseUrl}/carouselfooter`;
+  readonly Header1 =`${this.apiBaseUrl}/Header1`;
+  readonly homepage1 =`${this.apiBaseUrl}/homepage1`;
 
   constructor() { }
 }

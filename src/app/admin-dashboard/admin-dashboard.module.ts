@@ -13,21 +13,15 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { MdMessageComponent } from './components/md-message/md-message.component';
 import { OfficerListComponent } from './components/officer-list/officer-list.component';
 import { PhotoUploadComponent } from './components/photo-upload/photo-upload.component';
-import { HeaderComponent } from './components/header/header.component';
-import { HeaderModuleComponent } from './components/header-module/header-module.component';
 import { HeaderNoticeComponent } from './components/header-notice/header-notice.component';
-import { HeaderSubnoticeComponent } from './components/header-subnotice/header-subnotice.component';
-import { FooterHotlinkComponent } from './components/footer-hotlink/footer-hotlink.component';
-import { FooterMapComponent } from './components/footer-map/footer-map.component';
 import { FooterAddressComponent } from './components/footer-address/footer-address.component';
-import { HomeSliderImageComponent } from './components/home-slider-image/home-slider-image.component';
 import { HomeOfficerDetailComponent } from './components/home-officer-detail/home-officer-detail.component';
-import { HomeHyperLinkComponent } from './components/home-hyper-link/home-hyper-link.component';
-import { HomePositiveNoteComponent } from './components/home-positive-note/home-positive-note.component';
-import { HomeNewSchemeComponent } from './components/home-new-scheme/home-new-scheme.component';
-import { HomeImportantNoticeComponent } from './components/home-important-notice/home-important-notice.component';
 import { VideoUploadComponent } from './components/video-upload/video-upload.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { Header1Component } from './components/header1/header1.component';
+import { BannerComponent } from './components/banner/banner.component';
+import { Homepage1Component } from './components/homepage1/homepage1.component';
+import { CarouselfooterComponent } from './components/carouselfooter/carouselfooter.component';
 
 @NgModule({
   declarations: [
@@ -41,21 +35,15 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     MdMessageComponent,
     OfficerListComponent,
     PhotoUploadComponent,
-    HeaderComponent,
-    HeaderModuleComponent,
     HeaderNoticeComponent,
-    HeaderSubnoticeComponent,
-    FooterHotlinkComponent,
-    FooterMapComponent,
     FooterAddressComponent,
-    HomeSliderImageComponent,
     HomeOfficerDetailComponent,
-    HomeHyperLinkComponent,
-    HomePositiveNoteComponent,
-    HomeNewSchemeComponent,
-    HomeImportantNoticeComponent,
     VideoUploadComponent,
     FeedbackComponent,
+    Header1Component,
+    BannerComponent,
+    Homepage1Component,
+    CarouselfooterComponent,
     
   ],
   imports: [

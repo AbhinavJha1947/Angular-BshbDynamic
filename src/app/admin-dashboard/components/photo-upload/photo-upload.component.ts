@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from 'src/app/config.service';
 
+
 @Component({
   selector: 'app-photo-upload',
   templateUrl: './photo-upload.component.html',
@@ -32,7 +33,7 @@ export class PhotoUploadComponent implements OnInit {
       this.http.post(this.configService.PhotoGallery, formData, { headers })
         .subscribe(response => {
           console.log(response);
-          this.fetchPhotos();  // Refresh the gallery after upload
+          this.fetchPhotos();  
         }, error => {
           console.error(error);
         });

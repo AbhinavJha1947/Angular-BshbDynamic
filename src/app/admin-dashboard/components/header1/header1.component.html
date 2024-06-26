@@ -1,0 +1,55 @@
+<div class="upload-container">
+    <h1>Upload Header Data</h1>
+    <form (ngSubmit)="onUpload()">
+      <div class="form-group">
+        <label for="url1">URL 1:</label>
+        <input type="text" id="url1" [(ngModel)]="url1" name="url1">
+      </div>
+      <div class="form-group">
+        <label for="img1">Choose Image 1:</label>
+        <input type="file" id="img1" (change)="onFileSelected($event, 'img1')">
+      </div>
+      <div class="form-group">
+        <label for="text1">Text 1:</label>
+        <input type="text" id="text1" [(ngModel)]="text1" name="text1">
+      </div>
+      <div class="form-group">
+        <label for="text2">Text 2:</label>
+        <input type="text" id="text2" [(ngModel)]="text2" name="text2">
+      </div>
+      <div class="form-group">
+        <label for="url2">URL 2:</label>
+        <input type="text" id="url2" [(ngModel)]="url2" name="url2">
+      </div>
+      <div class="form-group">
+        <label for="img2">Choose Image 2:</label>
+        <input type="file" id="img2" (change)="onFileSelected($event, 'img2')">
+      </div>
+      <button type="submit" [disabled]="!img1 || !img2">Upload</button>
+    </form>
+  </div>
+  
+  <div class="gallery-container">
+    <h1>Existing Data</h1>
+    <div class="photo-gallery">
+      <div class="photo-item" *ngFor="let item of data">
+        <div class="photo-text">
+          <p><strong>Text 1:</strong> {{item.text1}}</p>
+          <p><strong>Text 2:</strong> {{item.text2}}</p>
+        </div>
+        <div class="photo-links">
+          <a [href]="item.url1" target="_blank">URL 1</a>
+          <a [href]="item.url2" target="_blank">URL 2</a>
+        </div>
+        <div class="photo-images">
+          <img [src]="item.imageUrl1" alt="Image 1">
+          <img [src]="item.imageUrl2" alt="Image 2">
+        </div>
+        <div class="photo-actions">
+          <button class="edit-btn" (click)="onEdit(item)">Edit</button>
+          <button class="delete-btn" (click)="onDelete(item.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
