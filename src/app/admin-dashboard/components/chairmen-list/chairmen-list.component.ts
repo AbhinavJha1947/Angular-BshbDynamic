@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ChairmenListService } from 'src/app/admin-dashboard/Services/chairmen-list.service';
+import { ConfigService } from 'src/app/config.service'; 
 
-interface Chairmen {
+interface Chairman {
   id?: string;
   name: string;
   from: Date;
   to: Date;
-  photo: string; // Ensure it's of type string
+  photo?: string;
 }
 
 @Component({
@@ -15,17 +16,18 @@ interface Chairmen {
   styleUrls: ['./chairmen-list.component.css']
 })
 export class ChairmenListComponent implements OnInit {
-  chairmen: Chairmen = {
+ 
+  isEditMode = false;
+  chairmen: Chairman = {
     id: '',
     name: '',
     from: new Date(),
     to: new Date(),
-    photo: '' 
+    photo: ''
   };
-  isEditMode = false;
-  chairmenList: Chairmen[] = []; 
+  chairmenList: Chairman[] = []; 
 
-  constructor(private chairmenListService: ChairmenListService) { }
+  constructor(private chairmenListService: ChairmenListService, private configService: ConfigService) { }
 
   ngOnInit() {
     this.getChairmen();
@@ -46,8 +48,8 @@ export class ChairmenListComponent implements OnInit {
       formData.append('photo', this.chairmen.photo);
     }
 
-    if (this.isEditMode) {
-      this.chairmenListService.updateChairman(this.chairmen.id!, formData).subscribe(() => {
+    if (this.isEditMode && this.chairmen.id) {
+      this.chairmenListService.updateChairman(this.chairmen.id, formData).subscribe(() => {
         this.getChairmen();
         this.resetForm();
       });
@@ -59,8 +61,8 @@ export class ChairmenListComponent implements OnInit {
     }
   }
 
-  onEdit(chairman: Chairmen) {
-    this.chairmen = { ...chairman };
+  onEdit(chairman: Chairman) {
+    this.chairmen = { ...chairman, from: new Date(chairman.from), to: new Date(chairman.to) };
     this.isEditMode = true;
   }
 

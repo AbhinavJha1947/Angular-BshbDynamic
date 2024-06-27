@@ -22,7 +22,7 @@
 
   <h2>Officers</h2>
   <div *ngFor="let officer of officers" class="officer-item">
-    <img [src]="officer.image" alt="{{ officer.name }}" class="officer-img">
+    <img *ngIf="officer.photoUrl" [src]="officer.photoUrl" alt="{{ officer.name }}" class="officer-img">
     <p><strong>Name:</strong> {{ officer.name }}</p>
     <p><strong>Designation:</strong> {{ officer.designation }}</p>
     <p><strong>Details:</strong> {{ officer.details }}</p>

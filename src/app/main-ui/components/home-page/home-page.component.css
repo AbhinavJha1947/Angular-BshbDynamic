@@ -1,16 +1,3 @@
-/* Reset and base styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f0f0f0;
-}
-
 /* Container for the entire home page */
 .home-container {
   padding: 20px;
@@ -18,62 +5,93 @@ body {
   flex-wrap: wrap;
   gap: 20px;
 }
+
 /* Styling for the photo gallery */
 .photo-gallery {
   display: flex;
   flex-direction: column;
   gap: 1px;
+  width: 100%;
 }
 
 .photo-item {
   display: flex;
-  align-items: flex-start;
-  gap: 2px;
+  align-items: stretch;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .photo-text {
-  flex: 1;
-  max-width: 50%;
+  flex: 0 0 70%; /* 70% width for the text */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  box-sizing: border-box;
 }
 
 .photo-images {
-  flex: 1;
-  max-width: 50%;
-  height: min-content;
+  flex: 0 0 30%; /* 30% width for the images */
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
 }
 
-.photo-images img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Styling for officers section */
-.officers-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px;
-}
-
-.officer-item {
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 200px;
+.minister-item {
   text-align: center;
 }
 
-.officer-img {
+.minister-item img {
   width: 100%;
+  max-width: 100px; /* Limit the maximum width of the image */
   height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.minister-item span {
+  display: block;
+}
+
+/* Styling for the side links section */
+.side-links {
+  flex: 0 0 30%; /* 30% width for the side links */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.side-link {
+  flex: 1 1 calc(33.333% - 10px); /* Three columns with a gap of 10px */
+  max-width: calc(33.333% - 10px);
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.officer-img {
+  margin-bottom: 10px;
+}
+
+.officer-img img {
+  width: 100%;
+  max-width: 100px; /* Limit the maximum width of the image */
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Content section containing tab section and side links */
 .content-section {
-  flex: 1; /* Take remaining space */
   display: flex;
-  justify-content: space-between;
+  width: 100%;
   gap: 20px;
 }
 
@@ -84,12 +102,14 @@ body {
   border: 1px solid #dddddd;
   border-radius: 5px;
   padding: 15px;
+  box-sizing: border-box;
 }
 
 .page-tab {
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 15px;
+  box-sizing: border-box;
 }
 
 .page-tab-res {
@@ -129,19 +149,6 @@ body {
   background-color: #fff;
 }
 
-/* Side links section */
-.side-links {
-  flex: 1; /* Adjust width based on layout */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.side-link,
-.side-link2 {
-  flex: 1;
-}
-
 .imt-logo {
   width: 50%;
   text-align: center;
@@ -162,7 +169,15 @@ body {
     order: 2; /* Change order for mobile layout */
   }
 
-  .side-links {
-    order: 1; /* Change order for mobile layout */
+  .side-link {
+    flex: 1 1 calc(50% - 5px); /* Two columns with a gap of 10px */
+    max-width: calc(50% - 5px);
+  }
+}
+
+@media (max-width: 480px) {
+  .side-link {
+    flex: 1 1 100%; /* One column */
+    max-width: 100%;
   }
 }

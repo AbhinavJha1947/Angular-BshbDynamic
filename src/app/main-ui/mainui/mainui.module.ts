@@ -43,7 +43,6 @@ import { ImageSliderComponent } from 'src/app/main-ui/components/image-slider/im
 import { CarouselModule } from '@syncfusion/ej2-angular-navigations';
 import { SitemapComponent } from 'src/app/main-ui/components/sitemap/sitemap.component';
 import { CarouselComponent } from 'src/app/main-ui/components/carousel/carousel.component';
-import { FocusService } from '../Services/focus.service';
 
 @NgModule({
   declarations: [
@@ -94,7 +93,7 @@ import { FocusService } from '../Services/focus.service';
     FormsModule,
     CarouselModule
   ],
-  providers: [FocusService],
+  providers: [],
   exports: [
     // HeaderComponent,
     // FooterComponent,

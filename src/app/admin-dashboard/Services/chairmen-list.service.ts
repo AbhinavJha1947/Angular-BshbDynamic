@@ -3,13 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ConfigService } from 'src/app/config.service';
 
-interface Chairmen {
-  id?: string;
-  name: string;
-  from: Date;
-  to: Date;
-  photo: string; 
-} 
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +10,8 @@ export class ChairmenListService {
 
   constructor(private http: HttpClient, private configService: ConfigService) { }
 
-  getChairmen(): Observable<Chairmen[]> {
-    return this.http.get<Chairmen[]>(this.configService.Chairman);
+  getChairmen(): Observable<any[]> {
+    return this.http.get<any[]>(this.configService.Chairman);
   }
 
   addChairman(chairman: FormData): Observable<any> { 

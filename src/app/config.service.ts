@@ -13,7 +13,7 @@ export class ConfigService {
 
   readonly officerlist = `${this.apiBaseUrl}/officerlist`;
   readonly ContactList = `${this.apiBaseUrl}/ContactList`;
-  readonly SubNotice = `${this.apiBaseUrl}/SubNotice`;
+  readonly Notice = `${this.apiBaseUrl}/Notice`;
   readonly MDMessage = `${this.apiBaseUrl}/MDMessage`;
   readonly RegisteredOffices = `${this.apiBaseUrl}/RegisteredOffices`;
   readonly Chairman = `${this.apiBaseUrl}/Chairman`;

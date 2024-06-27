@@ -4,33 +4,25 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ConfigService } from 'src/app/config.service';
 
-interface Contact {
-  id?: string;
-  name: string;
-  department: string;
-  designation: string;
-  phone: string;
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class ContactListService {
   constructor(private http: HttpClient, private configService: ConfigService) { }
 
-  getContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.configService.ContactList).pipe(
+  getContacts(): Observable<any[]> {
+    return this.http.get<any[]>(this.configService.ContactList).pipe(
       catchError(this.handleError)
     );
   }
 
-  addContact(contact: Contact): Observable<Contact> {
-    return this.http.post<Contact>(this.configService.ContactList, contact).pipe(
+  addContact(contact: any): Observable<any> {
+    return this.http.post<any>(this.configService.ContactList, contact).pipe(
       catchError(this.handleError)
     );
   }
 
-  updateContact(id: string, contact: Contact): Observable<void> {
+  updateContact(id: string, contact: any): Observable<void> {
     return this.http.put<void>(`${this.configService.ContactList}/${id}`, contact).pipe(
       catchError(this.handleError)
     );

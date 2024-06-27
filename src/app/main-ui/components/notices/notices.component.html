@@ -10,10 +10,10 @@
             <button (click)="next()" title="Next">&gt;</button>
           </div>
         </div>
-        <div id="flexCarousel2" class="news-section2">
+        <div id="flexCarousel2" class="news-section2" #newsCarousel>
           <ul class="slides news-slide" id="newsSlide">
-            <li *ngFor="let update of updates">
-              <span>{{ update }}</span>
+            <li *ngFor="let notice of notices">
+              <a [href]="notice.url" target="_blank">{{ notice.text }}</a>
             </li>
           </ul>
         </div>

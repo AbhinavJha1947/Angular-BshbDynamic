@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-interface Officer {
-  id?: number;
-  name: string;
-  image: string;
-  designation: string;
-  details: string;
-}
+import { HttpClient } from '@angular/common/http';
+import { ConfigService } from 'src/app/config.service';
 
 @Component({
   selector: 'app-home-officer-detail',
@@ -16,21 +8,24 @@ interface Officer {
   styleUrls: ['./home-officer-detail.component.css']
 })
 export class HomeOfficerDetailComponent implements OnInit {
-  officers: Officer[] = [];
-  newOfficer: Officer = { name: '', image: '', designation: '', details: '' };
-  editingOfficer: Officer | null = null;
+  officers: any[] = [];
+  newOfficer: any = { name: '', designation: '', details: '' };
+  editingOfficer: any | null = null;
   selectedFile: File | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configService: ConfigService) {}
 
   ngOnInit(): void {
     this.getOfficers();
   }
 
-  getOfficers() {
-    this.http.get<Officer[]>('https://localhost:7169/api/OfficerList').subscribe(
+  getOfficers(): void {
+    this.http.get<any[]>(this.configService.officerlist).subscribe(
       (response) => {
-        this.officers = response;
+        this.officers = response.map(officer => ({
+          ...officer,
+          photoUrl: officer.photo ? `data:image/jpeg;base64,${officer.photo}` : null
+        }));
       },
       (error) => {
         console.error('Error fetching officers:', error);
@@ -38,13 +33,13 @@ export class HomeOfficerDetailComponent implements OnInit {
     );
   }
 
-  onFileChange(event: any) {
+  onFileChange(event: any): void {
     if (event.target.files && event.target.files.length) {
       this.selectedFile = event.target.files[0];
     }
   }
 
-  addOfficer() {
+  addOfficer(): void {
     if (this.editingOfficer) {
       this.updateOfficer();
     } else {
@@ -56,10 +51,13 @@ export class HomeOfficerDetailComponent implements OnInit {
         formData.append('Photo', this.selectedFile);
       }
 
-      this.http.post<Officer>('https://localhost:7169/api/OfficerList', formData).subscribe(
+      this.http.post<any>(this.configService.officerlist, formData).subscribe(
         (response) => {
-          this.officers.push(response);
-          this.newOfficer = { name: '', image: '', designation: '', details: '' };
+          this.officers.push({
+            ...response,
+            photoUrl: response.photo ? `data:image/jpeg;base64,${response.photo}` : null
+          });
+          this.newOfficer = { name: '', designation: '', details: '' };
           this.selectedFile = null;
         },
         (error) => {
@@ -69,12 +67,12 @@ export class HomeOfficerDetailComponent implements OnInit {
     }
   }
 
-  editOfficer(officer: Officer) {
+  editOfficer(officer: any): void {
     this.editingOfficer = officer;
     this.newOfficer = { ...officer };
   }
 
-  updateOfficer() {
+  updateOfficer(): void {
     if (this.editingOfficer?.id !== undefined) {
       const formData = new FormData();
       formData.append('Name', this.newOfficer.name);
@@ -84,11 +82,14 @@ export class HomeOfficerDetailComponent implements OnInit {
         formData.append('Photo', this.selectedFile);
       }
 
-      this.http.put<Officer>(`https://localhost:7169/api/OfficerList/${this.editingOfficer.id}`, formData).subscribe(
+      this.http.put<any>(`${this.configService.officerlist}/${this.editingOfficer.id}`, formData).subscribe(
         (response) => {
           const index = this.officers.findIndex(o => o.id === this.editingOfficer?.id);
-          this.officers[index] = response;
-          this.newOfficer = { name: '', image: '', designation: '', details: '' };
+          this.officers[index] = {
+            ...response,
+            photoUrl: response.photo ? `data:image/jpeg;base64,${response.photo}` : null
+          };
+          this.newOfficer = { name: '', designation: '', details: '' };
           this.selectedFile = null;
           this.editingOfficer = null;
         },
@@ -99,9 +100,9 @@ export class HomeOfficerDetailComponent implements OnInit {
     }
   }
 
-  deleteOfficer(id: number | undefined) {
+  deleteOfficer(id: number | undefined): void {
     if (id !== undefined) {
-      this.http.delete(`https://localhost:7169/api/OfficerList/${id}`).subscribe(
+      this.http.delete(`${this.configService.officerlist}/${id}`).subscribe(
         () => {
           this.officers = this.officers.filter(officer => officer.id !== id);
         },

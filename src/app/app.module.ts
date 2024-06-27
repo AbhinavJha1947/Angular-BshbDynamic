@@ -8,11 +8,9 @@ import { MainUiModule } from 'src/app/main-ui/mainui/mainui.module';
 import { AdminDashboardModule } from './admin-dashboard/admin-dashboard.module';
 import { AuthService } from 'src/app/main-ui/Services/auth.service';
 import { AuthGuard } from 'src/app/main-ui/Services/auth.guard';
-import { FocusService } from './main-ui/Services/focus.service';
 @NgModule({
   declarations: [
     AppComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -22,7 +20,7 @@ import { FocusService } from './main-ui/Services/focus.service';
     RouterModule ,
     HttpClientModule 
   ],
-  providers: [AuthService, AuthGuard,FocusService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

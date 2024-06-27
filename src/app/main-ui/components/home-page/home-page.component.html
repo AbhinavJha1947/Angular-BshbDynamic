@@ -1,16 +1,28 @@
 <div class="home-container" id="mainContent">
   <h1>WELCOME TO Ministry/Department</h1>
+   <!-- Photo Gallery Section -->
   <div class="photo-gallery">
     <div class="photo-item" *ngFor="let item of data">
       <div class="photo-text">
-        <p><strong>{{item.text}}</strong></p>
+        <p><strong>{{ item.text }}</strong></p>
       </div>
       <div class="photo-images">
-        <img [src]="item.chiefministerImageUrl" alt="Chief Minister Image">
-        <img [src]="item.departmentministerImageUrl" alt="Department Minister Image">
+        <!-- Chief Minister Image -->
+        <div class="minister-item">
+          <img [src]="item.chiefministerImageUrl" alt="Chief Minister Image">
+          <span>Chief Minister</span>
+          <span>{{ item.chiefministerName }}</span>
+        </div>
+        <!-- Department Minister Image -->
+        <div class="minister-item">
+          <img [src]="item.departmentministerImageUrl" alt="Department Minister Image">
+          <span>Department Minister</span>
+          <span>{{ item.departmentministerName }}</span>
+        </div>
       </div>
     </div>
   </div>
+  
   <div class="content-section">
     <div class="wrapper home-banner tab-section">
       <div class="container common-container four_content">
@@ -86,17 +98,18 @@
       </div>
     </div>
 
+     <!-- Side Links Section -->
     <div class="side-links clearfix">
       <div class="side-link" *ngFor="let officer of officers">
         <div class="officer-img">
-          <img [src]="officer.image" alt="{{officer.name}}">
+          <img *ngIf="officer.photoUrl" [src]="officer.photoUrl" alt="{{ officer.name }}" class="officer-img">
         </div>
         <div class="officer-info">
-          <h3>{{officer.name}}</h3>
-          <p>{{officer.designation}}</p>
-          <p>{{officer.details}}</p>
+          <h3>{{ officer.name }}</h3>
+          <p>{{ officer.designation }}</p>
+          <p>{{ officer.details }}</p>
         </div>
       </div>
-    </div>
+    </div>   
   </div>
 </div>

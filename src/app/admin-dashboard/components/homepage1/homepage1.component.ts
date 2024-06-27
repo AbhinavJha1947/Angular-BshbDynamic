@@ -9,6 +9,8 @@ import { ConfigService } from 'src/app/config.service';
 })
 export class Homepage1Component implements OnInit {
   text: string = '';
+  chiefministerName: string = '';
+  departmentministerName: string = '';
   chiefminister: File | null = null;
   departmentminister: File | null = null;
   data: any[] = [];
@@ -32,6 +34,8 @@ export class Homepage1Component implements OnInit {
   onUpload(): void {
     const formData = new FormData();
     formData.append('text', this.text);
+    formData.append('chiefministerName', this.chiefministerName);
+    formData.append('departmentministerName', this.departmentministerName);
 
     if (this.chiefminister) formData.append('chiefminister', this.chiefminister, this.chiefminister.name);
     if (this.departmentminister) formData.append('departmentminister', this.departmentminister, this.departmentminister.name);
@@ -61,7 +65,9 @@ export class Homepage1Component implements OnInit {
         id: item.id,
         text: item.text,
         chiefministerImageUrl: 'data:image/jpeg;base64,' + item.chiefminister,
-        departmentministerImageUrl: 'data:image/jpeg;base64,' + item.departmentminister
+        chiefministerName: item.chiefministerName,
+        departmentministerImageUrl: 'data:image/jpeg;base64,' + item.departmentminister,
+        departmentministerName: item.departmentministerName
       }));
     }, error => {
       console.error(error);
@@ -81,12 +87,18 @@ export class Homepage1Component implements OnInit {
     this.isEditing = true;
     this.editingItemId = item.id;
     this.text = item.text;
+    this.chiefministerName = item.chiefministerName;
+    this.departmentministerName = item.departmentministerName;
+    this.chiefminister = null;  // Reset file input
+    this.departmentminister = null;  // Reset file input
   }
 
   resetForm(): void {
     this.isEditing = false;
     this.editingItemId = null;
     this.text = '';
+    this.chiefministerName = '';
+    this.departmentministerName = '';
     this.chiefminister = null;
     this.departmentminister = null;
   }

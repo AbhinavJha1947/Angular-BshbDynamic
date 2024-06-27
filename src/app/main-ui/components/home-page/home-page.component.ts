@@ -26,22 +26,22 @@ export class HomePageComponent implements OnInit {
         id: item.id,
         text: item.text,
         chiefministerImageUrl: 'data:image/jpeg;base64,' + item.chiefminister,
-        departmentministerImageUrl: 'data:image/jpeg;base64,' + item.departmentminister
+        chiefministerName: item.chiefministerName,
+        departmentministerImageUrl: 'data:image/jpeg;base64,' + item.departmentminister,
+        departmentministerName: item.departmentministerName
       }));
     }, error => {
       console.error(error);
     });
   }
 
-  getOfficers() {
+  getOfficers(): void {
     this.http.get<any[]>(this.configService.officerlist).subscribe(
       (response) => {
-        this.officers = response.map(officer => {
-          if (officer.image) {
-            officer.image = 'data:image/jpeg;base64,' + officer.image;
-          }
-          return officer;
-        });
+        this.officers = response.map(officer => ({
+          ...officer,
+          photoUrl: officer.photo ? `data:image/jpeg;base64,${officer.photo}` : null
+        }));
       },
       (error) => {
         console.error('Error fetching officers:', error);

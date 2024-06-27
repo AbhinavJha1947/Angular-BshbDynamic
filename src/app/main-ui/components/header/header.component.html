@@ -9,7 +9,7 @@
           <a target="_blank" href="https://india.gov.in/" title="Government of India, External Link that opens in a new window">Government of India</a>
         </div>
         <div class="nav-section">
-          <a href="javascript:void(0);" (click)="skipToMainContent()" title="Skip to main content">Skip to main content</a>
+          <a href="javascript:void(0);" title="Skip to main content">Skip to main content</a>
         </div>
         <div class="nav-section">
           <a id="toggleAccessibility" title="Accessibility Dropdown">
@@ -45,22 +45,22 @@
   </div>
 </header>
 
-<section class="wrapper header-wrapper">
+<section class="wrapper header-wrapper" *ngIf="data">
   <div class="container common-container four_content header-container">
     <h2 class="logo">
-      <a href="home.html" title="Home" rel="home" class="header__logo" id="logo">
-        <img class="national_emblem" src="assets/images/emblem-dark.png" alt="national emblem">
+      <a [href]="data.url1" title="Home" rel="home" class="header__logo" id="logo">
+        <img *ngIf="data.imageUrl1" [src]="data.imageUrl1" alt="national emblem" class="national_emblem"> 
         <p>
-          <li>शहरी विकास और आवास विभाग मंत्रालय / बिहार राज्य आवास बोर्ड</li>                       
-          <li>Ministry of Urban Development and Housing Department/ Bihar State Housing Board</li>
+          <li *ngIf="data.text1">{{ data.text1 }}</li> 
+          <li *ngIf="data.text2">{{ data.text2 }}</li> 
         </p>
       </a>
     </h2>
     <div class="header-right clearfix">
       <div class="right-content clearfix">
         <div class="float-element">
-          <a class="sw-logo" target="_blank" href="https://swachhbharat.mygov.in/" title="Swachh Bharat, External link that open in a new windows">
-            <img src="assets/images/swach-bharat.png" alt="Swachh Bharat">
+          <a *ngIf="data.url2" class="sw-logo" [href]="data.url2" target="_blank" title="Swachh Bharat, External link that opens in a new window">
+            <img *ngIf="data.imageUrl2" [src]="data.imageUrl2" alt="Swachh Bharat"> 
           </a>
         </div>
       </div>
